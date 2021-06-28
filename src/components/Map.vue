@@ -1,5 +1,5 @@
 <template>
-  <svg id="map" width="600px" height="500px">
+  <svg id="graph">
     <svg v-for="node in mapdata" :key="node.id">
       <svg v-for="line in node.nextNode" :key="line.id">
         <Edge :x="line.x" :y="line.y" :x2="node.x" :y2="node.y" />
@@ -37,7 +37,8 @@ export default {
 </script>
 
 <style>
-#map {
-  border: solid;
+#graph {
+  width: 100%;
+  height: 100%;
 }
 </style>
