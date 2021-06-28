@@ -1,0 +1,43 @@
+[
+    {
+        "id": "node1",
+        "type": "node",
+        "x": "30",
+        "y": "100",
+        "nextNode": [
+            {
+                "id": "node2",
+                "type": "node",
+                "x": "300",
+                "y": "200"
+            },
+            {
+                "id": "node3",
+                "type": "node",
+                "x": "70",
+                "y": "300"
+            }
+        ]
+    },
+    {
+        "id": "node2",
+        "type": "node",
+        "x": "300",
+        "y": "200",
+        "nextNode": [
+            {
+                "id": "node3",
+                "type": "node",
+                "x": "70",
+                "y": "300"
+            }
+        ]
+    },
+    {
+        "id": "node3",
+        "type": "node",
+        "x": "70",
+        "y": "300",
+        "nextNode": []
+    }
+]
