@@ -1,9 +1,20 @@
 <template>
   <svg id="graph">
     <svg v-for="node in mapdata" :key="node.id">
-      <svg v-for="line in node.nextNode" :key="line.id">
-        <Edge :x="line.x" :y="line.y" :x2="node.x" :y2="node.y" />
+      <svg v-for="next_node in node.nextNode" :key="next_node">
+        <Edge
+          :x="mapdata[next_node - 1].x"
+          :y="mapdata[next_node - 1].y"
+          :x2="node.x"
+          :y2="node.y"
+        />
       </svg>
+    </svg>
+    <!-- 
+      最前面にノードを置くので最後に配置する
+      :keyはnode.idがすでに使用済みなので少し変えておく
+    -->
+    <svg v-for="node in mapdata" :key="'_' + node.id">
       <Node :nodeObj="node" />
     </svg>
   </svg>
