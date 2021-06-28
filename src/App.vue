@@ -36,23 +36,24 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
+  min-width: 800px;
 }
 #main {
   position: absolute;
-  width: 70%;
-  height: 80%;
-  margin-left: 15%;
-  margin-right: 15%;
+  width: 90%;
+  height: 700px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 #map {
   height: 100%;
-  width: 70%;
+  width: 60%;
   float: left;
   border: solid;
 }
 #sidebar {
   height: 100%;
-  width: 26%;
+  width: 35%;
   margin-right: 1%;
   margin-left: 1%;
   float: right;
