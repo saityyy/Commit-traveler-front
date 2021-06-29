@@ -12,10 +12,10 @@
     <g v-for="node in mapdata" :key="node.id">
       <g v-for="next_node in node.nextNode" :key="next_node">
         <Edge
-          :x="mapdata[next_node - 1].x"
-          :y="mapdata[next_node - 1].y"
-          :x2="node.x"
-          :y2="node.y"
+          :fromx="node.x"
+          :fromy="node.y"
+          :tox="mapdata[next_node - 1].x"
+          :toy="mapdata[next_node - 1].y"
         />
       </g>
     </g>
