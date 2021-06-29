@@ -1,5 +1,5 @@
 <template>
-  <svg :id="nodeObj.id">
+  <g :id="nodeObj.id">
     <circle
       v-on:mouseover="mouseOverAction"
       v-on:mouseleave="mouseLeaveAction"
@@ -9,7 +9,7 @@
       :fill="color"
       stroke="black"
     ></circle>
-  </svg>
+  </g>
 </template>
 
 <script>

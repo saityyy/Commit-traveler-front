@@ -1,22 +1,28 @@
 <template>
-  <svg id="graph">
-    <svg v-for="node in mapdata" :key="node.id">
-      <svg v-for="next_node in node.nextNode" :key="next_node">
+  <svg
+    id="graph"
+    :viewBox="viewbox"
+    preserveAspectRatio="xMidYMid meet"
+    @wheel="mouseWheelAction"
+  >
+    <g v-for="node in mapdata" :key="node.id">
+      <g v-for="next_node in node.nextNode" :key="next_node">
         <Edge
           :x="mapdata[next_node - 1].x"
           :y="mapdata[next_node - 1].y"
           :x2="node.x"
           :y2="node.y"
         />
-      </svg>
-    </svg>
+      </g>
+    </g>
     <!-- 
       最前面にノードを置くので最後に配置する
       :keyはnode.idがすでに使用済みなので少し変えておく
     -->
-    <svg v-for="node in mapdata" :key="'_' + node.id">
+    <g v-for="node in mapdata" :key="'_' + node.id">
       <Node :nodeObj="node" />
-    </svg>
+    </g>
+    <circle :cx="centerx" :cy="centery" r="5" />
   </svg>
 </template>
 
@@ -29,12 +35,28 @@ export default {
   data: function () {
     return {
       color: "white",
+      viewScale: 500,
       mapdata: mapdata,
+      centerx: 400,
+      centery: 400,
     };
   },
   components: {
     Node,
     Edge,
+  },
+  computed: {
+    viewbox: function () {
+      const viewScale = parseInt(this.viewScale);
+      const viewbox = [
+        parseInt(this.centerx) - viewScale,
+        parseInt(this.centery) - viewScale,
+        2 * viewScale,
+        2 * viewScale,
+      ].join(" ");
+      console.log(viewbox);
+      return viewbox;
+    },
   },
   methods: {
     mouseOverAction() {
@@ -42,6 +64,12 @@ export default {
     },
     mouseLeaveAction() {
       this.color = "white";
+    },
+    mouseWheelAction(e) {
+      console.log(document.getElementById("graph"));
+      this.viewScale = parseInt(this.viewScale);
+      if (e.deltaY > 0) this.viewScale += 10;
+      else this.viewScale -= 10;
     },
   },
 };
