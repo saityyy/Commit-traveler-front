@@ -2,7 +2,7 @@
     {
         "id": "node1",
         "type": "node",
-        "x": "30",
+        "x": "60",
         "y": "100",
         "nextNode": [
             2,
@@ -41,16 +41,6 @@
         "id": "node5",
         "type": "node",
         "x": "800",
-        "y": "300",
-        "nextNode": [
-            2,
-            3
-        ]
-    },
-    {
-        "id": "node6",
-        "type": "node",
-        "x": "-100",
         "y": "300",
         "nextNode": [
             2,
