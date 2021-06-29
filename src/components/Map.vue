@@ -3,6 +3,9 @@
     id="graph"
     :viewBox="viewbox"
     preserveAspectRatio="xMidYMid meet"
+    @mouseup="canMove = false"
+    @mousedown="canMove = true"
+    @mousemove="moveMap"
     @wheel="mouseWheelAction"
   >
     <g v-for="node in mapdata" :key="node.id">
@@ -22,6 +25,7 @@
     <g v-for="node in mapdata" :key="'_' + node.id">
       <Node :nodeObj="node" />
     </g>
+    <!--中心点-->
     <circle :cx="centerx" :cy="centery" r="5" />
   </svg>
 </template>
@@ -39,6 +43,9 @@ export default {
       mapdata: mapdata,
       centerx: 400,
       centery: 400,
+      prevx: this.centerx,
+      prevy: this.centery,
+      canMove: false,
     };
   },
   components: {
@@ -70,6 +77,12 @@ export default {
       this.viewScale = parseInt(this.viewScale);
       if (e.deltaY > 0) this.viewScale += 10;
       else this.viewScale -= 10;
+    },
+    moveMap(e) {
+      if (this.canMove) {
+        this.centerx -= e.movementX;
+        this.centery -= e.movementY;
+      }
     },
   },
 };
