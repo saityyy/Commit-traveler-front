@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-06-29T10:50:18.544Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" etag="YFOM3pOs3OAHCkZnJ69O" version="14.8.1" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-06-29T10:55:41.093Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" etag="IXkGY12BPQSOSzw1qMF2" version="14.8.1" type="github" pages="2">
   <diagram id="9SCN9GtrKDQEi3Oo_EW_" name="Page-1">
     <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -42,7 +42,7 @@
         <mxCell id="cwtX8Aq7oQz4T9jXda7--14" value="&lt;font size=&quot;1&quot;&gt;ようこそ　？？？さん&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=29;fontStyle=1" vertex="1" parent="cwtX8Aq7oQz4T9jXda7--11">
           <mxGeometry x="575" y="61.25" width="115" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="cwtX8Aq7oQz4T9jXda7--19" value="&lt;ul&gt;&lt;li&gt;アイコンはとりあえず適当な画像を表示できればいい。&lt;/li&gt;&lt;li&gt;名前やproject名もとりあえず適当でいい&lt;/li&gt;&lt;li&gt;現在時刻を表示してほしい(vue.jsとjsを使う)&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=29;" vertex="1" parent="9Vw1OAYsuZpl8CM9YKTo-1">
+        <mxCell id="cwtX8Aq7oQz4T9jXda7--19" value="&lt;ul&gt;&lt;li&gt;アイコンはとりあえず適当な画像を表示できればいい。&lt;/li&gt;&lt;li&gt;名前やproject名もとりあえず適当でいい&lt;/li&gt;&lt;li&gt;現在時刻を表示してほしい(vue.jsとjsを使う)&lt;/li&gt;&lt;li&gt;編集するファイルはcomponentsフォルダに存在するHeader.vueのみ&lt;/li&gt;&lt;li&gt;アイコン（仮）画像ファイルはsrc/assetsに入れた&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=29;" vertex="1" parent="9Vw1OAYsuZpl8CM9YKTo-1">
           <mxGeometry x="30" y="620" width="800" height="270" as="geometry" />
         </mxCell>
       </root>
