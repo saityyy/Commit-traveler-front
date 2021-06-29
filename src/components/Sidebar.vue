@@ -16,6 +16,7 @@
     <div class="tab_content" id="tab2_content">
       <div class="tab_content_description">
         <p class="c-txtsp">map info</p>
+        <p>{{ mapEvent }}</p>
       </div>
     </div>
     <div class="tab_content" id="tab3_content">
@@ -32,7 +33,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    mapEvent: Object,
+  },
+};
 </script>
 
 <style>

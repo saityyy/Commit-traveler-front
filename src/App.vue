@@ -3,10 +3,10 @@
     <div id="header"><Header /></div>
     <div id="main">
       <div id="map">
-        <Map />
+        <Map @commitInfo="manageInfo" />
       </div>
       <div id="sidebar">
-        <Sidebar />
+        <Sidebar :mapEvent="mapEvent" />
       </div>
     </div>
   </div>
@@ -23,6 +23,16 @@ export default {
     Header,
     Map,
     Sidebar,
+  },
+  data: function () {
+    return {
+      mapEvent: {},
+    };
+  },
+  methods: {
+    manageInfo: function (info) {
+      this.mapEvent = info;
+    },
   },
 };
 </script>

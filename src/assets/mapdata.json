@@ -46,5 +46,21 @@
             2,
             3
         ]
+    },
+    {
+        "id": "node6",
+        "type": "checkpoint",
+        "x": "600",
+        "y": "800",
+        "nextNode": []
+    },
+    {
+        "id": "node7",
+        "type": "node",
+        "x": "800",
+        "y": "600",
+        "nextNode": [
+            6
+        ]
     }
 ]

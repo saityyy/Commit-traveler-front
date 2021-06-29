@@ -25,6 +25,7 @@ export default {
   methods: {
     mouseOverAction() {
       this.color = "black";
+      this.$emit("selectedNode", this.nodeObj);
     },
     mouseLeaveAction() {
       this.color = "white";

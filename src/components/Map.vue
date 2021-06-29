@@ -24,7 +24,7 @@
       :keyはnode.idがすでに使用済みなので少し変えておく
     -->
     <g v-for="node in mapdata" :key="'_' + node.id">
-      <Node :nodeObj="node" />
+      <Node :nodeObj="node" @selectedNode="toSidebar" />
     </g>
     <!--中心点-->
     <circle :cx="centerx" :cy="centery" r="5" />
@@ -71,8 +71,8 @@ export default {
       centery: 400,
       prevx: this.centerx,
       prevy: this.centery,
-      bottomMap: 400,
-      rightMap: 600,
+      bottomMap: 1000,
+      rightMap: 1000,
       canMove: false,
     };
   },
@@ -113,6 +113,9 @@ export default {
         this.centerx = Math.min(Math.max(0, newx), this.rightMap);
         this.centery = Math.min(Math.max(0, newy), this.bottomMap);
       }
+    },
+    toSidebar(selectedNodeInfo) {
+      this.$emit("commitInfo", selectedNodeInfo);
     },
   },
 };
