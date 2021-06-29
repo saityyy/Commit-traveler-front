@@ -1,8 +1,8 @@
 <template>
   <div class="tab_container">
-    <input id="tab1" type="radio" name="tab_item" checked />
+    <input id="tab1" type="radio" name="tab_item" />
     <label class="tab_item" for="tab1">ユーザー</label>
-    <input id="tab2" type="radio" name="tab_item" />
+    <input id="tab2" type="radio" name="tab_item" checked />
     <label class="tab_item" for="tab2">マップ</label>
     <input id="tab3" type="radio" name="tab_item" />
     <label class="tab_item" for="tab3">コミット</label>

@@ -12,10 +12,9 @@
     <g v-for="node in mapdata" :key="node.id">
       <g v-for="next_node in node.nextNode" :key="next_node">
         <Edge
-          :fromx="node.x"
-          :fromy="node.y"
-          :tox="mapdata[next_node - 1].x"
-          :toy="mapdata[next_node - 1].y"
+          :fromNode="node"
+          :toNode="mapdata[next_node - 1]"
+          :nodeEvent="nodeEvent"
         />
       </g>
     </g>
@@ -24,7 +23,7 @@
       :keyはnode.idがすでに使用済みなので少し変えておく
     -->
     <g v-for="node in mapdata" :key="'_' + node.id">
-      <Node :nodeObj="node" @selectedNode="toSidebar" />
+      <Node :nodeObj="node" @selectedNode="selectedNode" />
     </g>
     <!--中心点-->
     <circle :cx="centerx" :cy="centery" r="5" />
@@ -74,6 +73,7 @@ export default {
       bottomMap: 1000,
       rightMap: 1000,
       canMove: false,
+      nodeEvent: null,
     };
   },
   components: {
@@ -86,7 +86,6 @@ export default {
       const minx = parseInt(this.centerx) - viewScale;
       const miny = parseInt(this.centery) - viewScale;
       const viewbox = [minx, miny, 2 * viewScale, 2 * viewScale].join(" ");
-      console.log(viewbox);
       return viewbox;
     },
   },
@@ -98,7 +97,6 @@ export default {
       this.color = "white";
     },
     mouseWheelAction(e) {
-      console.log(document.getElementById("graph"));
       this.viewScale = parseInt(this.viewScale);
       if (e.deltaY > 0) this.viewScale += 10;
       else this.viewScale -= 10;
@@ -114,8 +112,9 @@ export default {
         this.centery = Math.min(Math.max(0, newy), this.bottomMap);
       }
     },
-    toSidebar(selectedNodeInfo) {
+    selectedNode(selectedNodeInfo) {
       this.$emit("commitInfo", selectedNodeInfo);
+      this.nodeEvent = selectedNodeInfo;
     },
   },
 };
