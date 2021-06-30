@@ -33,6 +33,19 @@ export default {
     manageInfo: function (info) {
       this.mapEvent = info;
     },
+    getUserInfo() {
+      this.axios
+        .get("http://localhost:3000/api")
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((e) => {
+          alert(e);
+        });
+    },
+  },
+  created() {
+    this.getUserInfo();
   },
 };
 </script>
