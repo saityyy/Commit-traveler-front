@@ -104,7 +104,7 @@ export default {
         console.log(e);
       });
   },
-  //変更された時にメソッドを呼び出す
+  //変数が変更された時にメソッドを呼び出す
   watch: {
     userInfo(updatedInfo) {
       console.log(updatedInfo);

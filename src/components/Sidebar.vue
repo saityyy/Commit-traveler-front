@@ -20,7 +20,7 @@
     </div>
     <div class="tab_content" id="tab3_content">
       <div class="tab_content_description">
-        <CommitInfo />
+        <CommitInfo :userInfo="userInfo" />
       </div>
     </div>
     <div class="tab_content" id="tab4_content">
@@ -40,12 +40,16 @@ import CommitInfo from "./CommitInfo.vue";
 export default {
   props: {
     mapEvent: Object,
+    userInfo: Object,
   },
   components: {
     MapInfo,
     UserInfo,
     RankingInfo,
     CommitInfo,
+  },
+  data: function () {
+    return {};
   },
 };
 </script>

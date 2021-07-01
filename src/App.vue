@@ -6,7 +6,7 @@
         <Map @commitInfo="commitInfo" :userInfo="userInfo" />
       </div>
       <div id="sidebar">
-        <Sidebar :mapEvent="mapEvent" />
+        <Sidebar :mapEvent="mapEvent" :userInfo="userInfo" />
       </div>
     </div>
   </div>
@@ -36,15 +36,6 @@ export default {
     },
   },
   beforeCreate() {
-    //userのコミット情報を取得する
-    this.axios
-      .get("http://localhost:3000/api/get-commit")
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
     //userの情報を取得する
     this.axios
       .get("http://localhost:3000/api/get-user")
