@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <div id="header"><Header /></div>
-    <input type="button" value="コミットを反映させる" />
     <div id="main">
       <div id="map">
         <Map @commitInfo="commitInfo" :userInfo="userInfo" />
