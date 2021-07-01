@@ -80,6 +80,16 @@ export default {
     Node,
     Edge,
   },
+  created() {
+    this.axios
+      .post("http://localhost:3000/api/update-map", mapdata)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((e) => {
+        alert(e);
+      });
+  },
   computed: {
     viewbox: function () {
       const viewScale = parseInt(this.viewScale);
