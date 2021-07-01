@@ -34,7 +34,17 @@ export default {
       this.mapEvent = info;
     },
   },
-  created() {},
+  beforeCreate() {
+    //userの情報を取得する
+    this.axios
+      .get("http://localhost:3000/api/get-commit")
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
 };
 </script>
 
