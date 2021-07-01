@@ -1,7 +1,7 @@
 <template>
   <g>
     <marker
-      :id="fromNode.id + toNode.id"
+      :id="fromNode.id + 'to' + toNode.id"
       viewBox="0 -200 600 400"
       orient="auto"
     >
@@ -22,7 +22,7 @@
       :y2="toNode.y"
       :stroke="Color"
       stroke-width="4"
-      :marker-start="'url(#' + fromNode.id + toNode.id + ')'"
+      :marker-start="'url(#' + fromNode.id + 'to' + toNode.id + ')'"
     ></line>
   </g>
 </template>
