@@ -48,7 +48,6 @@ export default {
     //this.$emit("selectedNode", null);
     //},
     mouseDblclickAction() {
-      console.log("double click!");
       this.$emit("selectedNode", this.nodeObj);
     },
   },
