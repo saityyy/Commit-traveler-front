@@ -15,7 +15,7 @@
     </div>
     <div class="tab_content" id="tab2_content">
       <div class="tab_content_description">
-        <MapInfo />
+        <MapInfo :mapEvent="mapEvent" />
       </div>
     </div>
     <div class="tab_content" id="tab3_content">

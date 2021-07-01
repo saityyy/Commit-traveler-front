@@ -23,7 +23,11 @@
       :keyはnode.idがすでに使用済みなので少し変えておく
     -->
     <g v-for="node in mapdata" :key="'_' + node.id">
-      <Node :nodeObj="node" @selectedNode="selectedNode" />
+      <Node
+        :nodeObj="node"
+        :nodeEventId="nodeEventId"
+        @selectedNode="selectedNode"
+      />
     </g>
     <!--中心点-->
     <circle :cx="centerx" :cy="centery" r="5" />
@@ -76,6 +80,7 @@ export default {
       rightMap: 1000,
       canMove: false,
       nodeEvent: null,
+      nodeEventId: "",
       user_x: -10000,
       user_y: -10000,
     };
@@ -149,6 +154,7 @@ export default {
     selectedNode(selectedNodeInfo) {
       this.$emit("commitInfo", selectedNodeInfo);
       this.nodeEvent = selectedNodeInfo;
+      this.nodeEventId = selectedNodeInfo.id;
     },
   },
 };
