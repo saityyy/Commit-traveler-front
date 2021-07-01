@@ -41,6 +41,7 @@ export default {
     },
     mouseLeaveAction() {
       this.color = "white";
+      this.$emit("selectedNode", null);
     },
   },
 };

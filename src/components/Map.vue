@@ -19,7 +19,7 @@
       </g>
     </g>
     <!-- 
-      最前面にノードを置くので最後に配置する
+      最前面にノードを置くので最後に記述する
       :keyはnode.idがすでに使用済みなので少し変えておく
     -->
     <g v-for="node in mapdata" :key="'_' + node.id">
@@ -52,12 +52,14 @@
       :height="bottomMap"
       fill="#999999bb"
     />
+    <User :user_x="user_x" :user_y="user_y" />
   </svg>
 </template>
 
 <script>
 import Node from "./Node.vue";
 import Edge from "./Edge.vue";
+import User from "./User.vue";
 import mapdata from "../assets/mapdata.json";
 
 export default {
@@ -74,20 +76,39 @@ export default {
       rightMap: 1000,
       canMove: false,
       nodeEvent: null,
+      user_x: 0,
+      user_y: 0,
+      step: 0,
+      commit_count: 0,
     };
   },
   components: {
     Node,
     Edge,
+    User,
   },
-  created() {
+  beforeCreate() {
+    //マップデータベース更新
     this.axios
       .post("http://localhost:3000/api/update-map", mapdata)
       .then((res) => {
         console.log(res.data);
       })
       .catch((e) => {
-        alert(e);
+        console.log(e);
+      });
+    //userの情報を取得する
+    this.axios
+      .get("http://localhost:3000/api/get-user", mapdata)
+      .then((res) => {
+        const userInfo = res.data[0];
+        this.user_x = parseInt(mapdata[parseInt(userInfo.node_id) - 1].x) + 40;
+        this.user_y = parseInt(mapdata[parseInt(userInfo.node_id) - 1].y) - 50;
+        this.step = userInfo.step;
+        this.commit_count = userInfo.commit;
+      })
+      .catch((e) => {
+        console.log(e);
       });
   },
   computed: {

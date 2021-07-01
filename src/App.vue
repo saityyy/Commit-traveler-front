@@ -34,16 +34,7 @@ export default {
       this.mapEvent = info;
     },
   },
-  created() {
-    this.axios
-      .get("http://localhost:3000/api/get-user")
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((e) => {
-        alert(e);
-      });
-  },
+  created() {},
 };
 </script>
 

@@ -1,7 +1,7 @@
 [
     {
         "id": "1",
-        "type": "node",
+        "type": "start",
         "x": "60",
         "y": "100",
         "nextNode": [
