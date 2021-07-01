@@ -76,10 +76,8 @@ export default {
       rightMap: 1000,
       canMove: false,
       nodeEvent: null,
-      user_x: 0,
-      user_y: 0,
-      step: 0,
-      commit_count: 0,
+      user_x: -10000,
+      user_y: -10000,
     };
   },
   components: {
@@ -87,7 +85,10 @@ export default {
     Edge,
     User,
   },
-  beforeCreate() {
+  props: {
+    userInfo: Object,
+  },
+  created() {
     //マップデータベース更新
     this.axios
       .post("http://localhost:3000/api/update-map", mapdata)
@@ -97,20 +98,16 @@ export default {
       .catch((e) => {
         console.log(e);
       });
-    //userの情報を取得する
-    this.axios
-      .get("http://localhost:3000/api/get-user", mapdata)
-      .then((res) => {
-        const userInfo = res.data[0];
-        this.user_x = parseInt(mapdata[parseInt(userInfo.node_id) - 1].x) + 40;
-        this.user_y = parseInt(mapdata[parseInt(userInfo.node_id) - 1].y) - 50;
-        this.step = userInfo.step;
-        this.commit_count = userInfo.commit;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
   },
+  //変更された時にメソッドを呼び出す
+  watch: {
+    userInfo(updatedInfo) {
+      console.log(updatedInfo);
+      this.user_x = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].x) + 40;
+      this.user_y = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].y) - 50;
+    },
+  },
+  //watchとほぼ同じだが、こっちは監視する変数を指定する必要がない
   computed: {
     viewbox: function () {
       const viewScale = parseInt(this.viewScale);
@@ -118,6 +115,12 @@ export default {
       const miny = parseInt(this.centery) - viewScale;
       const viewbox = [minx, miny, 2 * viewScale, 2 * viewScale].join(" ");
       return viewbox;
+    },
+    step: function () {
+      return this.userInfo.step;
+    },
+    commit_count: function () {
+      return this.userInfo.commit;
     },
   },
   methods: {

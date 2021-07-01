@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <div id="header"><Header /></div>
+    <input type="button" value="コミットを反映させる" />
     <div id="main">
       <div id="map">
-        <Map @commitInfo="manageInfo" />
+        <Map @commitInfo="commitInfo" :userInfo="userInfo" />
       </div>
       <div id="sidebar">
         <Sidebar :mapEvent="mapEvent" />
@@ -27,19 +28,29 @@ export default {
   data: function () {
     return {
       mapEvent: {},
+      userInfo: {},
     };
   },
   methods: {
-    manageInfo: function (info) {
+    commitInfo: function (info) {
       this.mapEvent = info;
     },
   },
   beforeCreate() {
-    //userの情報を取得する
+    //userのコミット情報を取得する
     this.axios
       .get("http://localhost:3000/api/get-commit")
       .then((res) => {
         console.log(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    //userの情報を取得する
+    this.axios
+      .get("http://localhost:3000/api/get-user")
+      .then((res) => {
+        this.userInfo = res.data[0];
       })
       .catch((e) => {
         console.log(e);
