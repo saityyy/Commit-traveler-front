@@ -1,7 +1,7 @@
 <template>
   <g
     id="user"
-    fill="#ffffff00"
+    fill="#ffffffff"
     v-on:mouseover="mouseOverAction"
     v-on:mouseleave="mouseLeaveAction"
     :stroke="color"

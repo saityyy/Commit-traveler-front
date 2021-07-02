@@ -4,6 +4,9 @@
     <p>{{ node_id }}</p>
     <p>タイプ</p>
     <p>{{ node_type }}</p>
+    <p>場所</p>
+    <p>x: {{ node_x }}</p>
+    <p>y: {{ node_y }}</p>
     <br />
     <p>次のノード</p>
     <p v-for="node in nextNode" :key="node.id">{{ node.id }}</p>

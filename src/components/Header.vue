@@ -1,9 +1,16 @@
 <template>
-  <div id="header">hackthon project</div>
+  <div>
+    <div id="header">hackthon project</div>
+    />
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    userInfo: Object,
+  },
+};
 </script>
 
 <style>

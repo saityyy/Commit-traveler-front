@@ -112,8 +112,8 @@ export default {
     userInfo(updatedInfo) {
       console.log("Map.vue 112");
       console.log(updatedInfo);
-      this.user_x = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].x) + 40;
-      this.user_y = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].y) - 50;
+      this.user_x = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].x);
+      this.user_y = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].y);
     },
     sidebarEvent: {
       handler: function (updatedInfo) {
@@ -145,8 +145,8 @@ export default {
     //実装汚い
     moveUser(nextNode) {
       console.log("moveUser");
-      const dx = nextNode.x - this.user_x + 40;
-      const dy = nextNode.y - this.user_y - 50;
+      const dx = nextNode.x - this.user_x;
+      const dy = nextNode.y - this.user_y;
       const current_x = this.user_x;
       const current_y = this.user_y;
       var sum_x = 0;
@@ -164,8 +164,8 @@ export default {
           this.user_y = current_y + Math.floor(sum_y);
           if (count >= 100) {
             console.log("setTimeout");
-            this.user_x = parseInt(nextNode.x) + 40;
-            this.user_y = parseInt(nextNode.y) - 50;
+            this.user_x = parseInt(nextNode.x);
+            this.user_y = parseInt(nextNode.y);
             this.endMove();
             clearInterval(move);
           }

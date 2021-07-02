@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="header"><Header /></div>
+    <div id="header"><Header :userInfo="userInfo" /></div>
     <div id="main">
       <div id="map">
         <Map
