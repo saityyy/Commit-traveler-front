@@ -1,7 +1,7 @@
 <template>
   <div id="commitinfo" v-if="show_flag">
     <h1>総コミット数</h1>
-    <h2>{{ all_commit }}</h2>
+    <h2>{{ table_commit }}</h2>
     <h1>動かせるstep数</h1>
     <h2>{{ commit }}</h2>
     <h1>あと{{ user_node.step - user_step }}ステップ</h1>
@@ -25,6 +25,7 @@ export default {
     return {
       all_commit: 0,
       commit: 0,
+      table_commit: 0,
       user_node: 0,
       user_step: 0,
       show_flag: false,
@@ -49,7 +50,8 @@ export default {
       .then((res) => {
         console.log(res.data);
         this.all_commit = res.data.all_commit;
-        this.commit = res.data.new_commit;
+        this.commit = res.data.commit;
+        this.table_commit = res.data.table_commit;
       })
       .catch((e) => {
         console.log(e);
@@ -63,7 +65,8 @@ export default {
       var step = this.user_step + this.commit;
       //１マス分進む場合
       if (this.commit + this.user_step >= this.user_node.step) {
-        commit_count = this.all_commit - this.commit + this.user_step;
+        commit_count =
+          this.table_commit + (this.user_node.step - this.user_step);
         step = 0;
         node = this.next_node;
       }
