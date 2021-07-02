@@ -54,7 +54,6 @@ export default {
         2 * this.scope,
         2 * this.scope,
       ].join(" ");
-      console.log(viewbox);
       return viewbox;
     },
   },

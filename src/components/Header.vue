@@ -47,7 +47,7 @@ export default {
 <style>
 .header {
   background-color: #37beb0;
-  height: 60px;
+  height: 80px;
   margin-bottom: 30px;
 }
 .mark {
@@ -67,10 +67,11 @@ export default {
 }
 .name {
   float: right;
-  font-size: 10px;
+  font-size: 13px;
   padding-top: 44px;
   padding-right: 15px;
   font-family: sans-serif;
+  font-weight: bold;
 }
 .Timer {
   float: right;

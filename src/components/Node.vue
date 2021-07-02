@@ -1,18 +1,19 @@
 <template>
   <g
-    :id="nodeObj.id"
+    :id="node_id"
     @dblclick="mouseDblclickAction"
     :fill="color"
     stroke="black"
     stroke-width="4"
   >
-    <circle :cx="nodeObj.x" :cy="nodeObj.y" r="30"></circle>
+    <circle :cx="node_x" :cy="node_y" r="30"></circle>
     <circle
-      v-if="nodeObj.type == 'checkpoint'"
-      :cx="nodeObj.x"
-      :cy="nodeObj.y"
+      v-if="node_type == 'checkpoint'"
+      :cx="node_x"
+      :cy="node_y"
       r="20"
     ></circle>
+    <text :x="node_x - 40" :y="node_y - 40" font-size="30">{{ node_id }}</text>
   </g>
 </template>
 
@@ -21,7 +22,10 @@ export default {
   data: function () {
     return {
       color: "white",
-      eventFlag: false,
+      node_id: "",
+      node_type: "",
+      node_x: "",
+      node_y: "",
     };
   },
   props: {
@@ -31,13 +35,17 @@ export default {
   watch: {
     nodeEventId(updatedInfo) {
       if (updatedInfo == this.nodeObj.id) {
-        this.eventFlag = true;
         this.color = "red";
       } else {
-        this.eventFlag = false;
         this.color = "white";
       }
     },
+  },
+  created() {
+    this.node_id = this.nodeObj.id;
+    this.node_type = this.nodeObj.type;
+    this.node_x = this.nodeObj.x;
+    this.node_y = this.nodeObj.y;
   },
   methods: {
     //mouseOverAction() {

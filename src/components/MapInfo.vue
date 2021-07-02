@@ -23,6 +23,8 @@ export default {
       node_type: "",
       nextNode: [],
       showFlag: false,
+      node_x: "",
+      node_y: "",
     };
   },
   props: {
@@ -33,6 +35,8 @@ export default {
       if (updatedInfo) {
         this.node_id = updatedInfo.id;
         this.node_type = updatedInfo.type;
+        this.node_x = updatedInfo.x;
+        this.node_y = updatedInfo.y;
         this.nextNode = [];
         updatedInfo.nextNode.forEach((value) => {
           this.nextNode.push(mapdata[value - 1]);

@@ -110,8 +110,6 @@ export default {
   //変数が変更された時にメソッドを呼び出す
   watch: {
     userInfo(updatedInfo) {
-      console.log("Map.vue 112");
-      console.log(updatedInfo);
       this.user_x = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].x);
       this.user_y = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].y);
     },
@@ -144,7 +142,6 @@ export default {
   methods: {
     //実装汚い
     moveUser(nextNode) {
-      console.log("moveUser");
       const dx = nextNode.x - this.user_x;
       const dy = nextNode.y - this.user_y;
       const current_x = this.user_x;
@@ -156,14 +153,12 @@ export default {
       var move = setInterval(
         function () {
           count += 1;
-          console.log("setInterval");
           this.user_x = 300;
           sum_x += dx / 100.0;
           sum_y += dy / 100.0;
           this.user_x = current_x + Math.floor(sum_x);
           this.user_y = current_y + Math.floor(sum_y);
           if (count >= 100) {
-            console.log("setTimeout");
             this.user_x = parseInt(nextNode.x);
             this.user_y = parseInt(nextNode.y);
             this.endMove();

@@ -9,11 +9,18 @@
       <option disabled value="">次に移動するマスを選択してください</option>
       <option v-for="node in user_node.nextNode" :key="node">{{ node }}</option>
     </select>
+    <input v-model="comment" placeholder="ここにコメントを入力してください" />
     <p>
-      次のマスは<span>{{ next_node }}</span
+      次は<span>{{ next_node }}</span
       >番のノード
     </p>
-    <input type="button" value="マスをすすめる" @click="moveToNext" />
+    <p>コメント :{{ comment }}</p>
+    <input
+      type="button"
+      value="マスをすすめる"
+      @click="moveToNext"
+      :disabled="disabledCommit"
+    />
   </div>
 </template>
 
@@ -30,6 +37,7 @@ export default {
       user_step: 0,
       show_flag: false,
       next_node: 0,
+      comment: "",
     };
   },
   props: {
@@ -55,6 +63,24 @@ export default {
         });
     },
   },
+  computed: {
+    disabledCommit: function () {
+      //１マス進む場合
+      if (this.commit - (this.user_node.step - this.user_step) >= 0) {
+        if (this.next_node == 0) return true;
+        else {
+          if (mapdata[parseInt(this.next_node) - 1].type == "checkpoint") {
+            if (this.comment == "") return true;
+            else return false;
+          } else {
+            return false;
+          }
+        }
+      } else {
+        return false;
+      }
+    },
+  },
   methods: {
     moveToNext() {
       //同じノードでthis.commit分進める場合
@@ -67,6 +93,31 @@ export default {
           this.table_commit + (this.user_node.step - this.user_step);
         step = 0;
         node = this.next_node;
+      }
+      this.next_node = 0;
+      console.log("aaa");
+      console.log(this.user_node.id);
+      console.log(node);
+      console.log(mapdata[parseInt(node) - 1]);
+      if (
+        this.user_node.id != node &&
+        mapdata[parseInt(node) - 1].type == "checkpoint"
+      ) {
+        this.axios
+          .get(
+            "http://localhost:3000/api/visit-checkpoint/" +
+              node +
+              "/" +
+              commit_count +
+              "/" +
+              this.comment
+          )
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
       }
       this.axios
         .get(
