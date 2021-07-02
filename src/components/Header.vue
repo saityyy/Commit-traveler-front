@@ -62,12 +62,14 @@ export default {
   font-size:10px;
   padding-top:44px;
   padding-right:15px;
+  font-family:sans-serif;
 }
 .Timer{
   float:right;
-  font-size:19px;
+  font-size:22px;
   position:absolute;
   right:220px;
+  font-family:Franklin Gothic Medium;
 }
 .date{
   margin:3px;
