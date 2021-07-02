@@ -1,8 +1,8 @@
 <template>
   <div class="header">
     <div class="mark">codeGo</div>
-    <img class="logo" src="../assets/icon.png" width="38px" height="38px"/>
-    <div class="name">ようこそ？？？さん</div>
+    <img class="logo" :src="'https://avatars.githubusercontent.com/' + userInfo.name + '?s=500'" width="38px" height="38px"/>
+    <div class="name">ようこそ{{userInfo.name}}さん</div>
     <div class="Timer">
       <p class="date">{{date}}</p>
       <p class="time">{{time}}</p>
@@ -12,7 +12,11 @@
 
 <script>
 export default {
+  
   name: "Timer",
+  props:{
+    userInfo:Object,
+  },
   data: function () {
     return {
       date: "",
