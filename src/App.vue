@@ -3,10 +3,21 @@
     <div id="header"><Header /></div>
     <div id="main">
       <div id="map">
-        <Map @commitInfo="manageInfo" />
+        <Map
+          :mapEvent="mapEvent"
+          :sidebarEvent="sidebarEvent"
+          @MapEvent="receiveMapEvennt"
+          @SidebarEvent="receiveSidebarEvent"
+          :userInfo="userInfo"
+        />
       </div>
       <div id="sidebar">
-        <Sidebar :mapEvent="mapEvent" />
+        <Sidebar
+          :mapEvent="mapEvent"
+          :sidebarEvent="sidebarEvent"
+          @SidebarEvent="receiveSidebarEvent"
+          :userInfo="userInfo"
+        />
       </div>
     </div>
   </div>
@@ -27,23 +38,47 @@ export default {
   data: function () {
     return {
       mapEvent: {},
+      sidebarEvent: {
+        moveToNext: { userMovingFlag: false, nextNode: {} },
+      },
+      userInfo: {},
     };
-  },
-  methods: {
-    manageInfo: function (info) {
-      this.mapEvent = info;
-    },
   },
   beforeCreate() {
     //userの情報を取得する
     this.axios
-      .get("http://localhost:3000/api/get-commit")
+      .get("http://localhost:3000/api/get-user")
       .then((res) => {
-        console.log(res.data);
+        this.userInfo = res.data[0];
       })
       .catch((e) => {
         console.log(e);
       });
+  },
+  watch: {
+    sidebarEvent: {
+      handler: function () {
+        console.log("sidebarEvent");
+        this.axios
+          .get("http://localhost:3000/api/get-user")
+          .then((res) => {
+            this.userInfo = res.data[0];
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      },
+      deep: true,
+    },
+  },
+  methods: {
+    receiveMapEvennt: function (event) {
+      this.mapEvent = event;
+    },
+    receiveSidebarEvent: function (event) {
+      this.sidebarEvent = event;
+      console.log(event);
+    },
   },
 };
 </script>

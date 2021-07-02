@@ -10,32 +10,56 @@
     <label class="tab_item" for="tab4">ランキング</label>
     <div class="tab_content" id="tab1_content">
       <div class="tab_content_description">
-        <p class="c-txtsp">user info</p>
+        <UserInfo />
       </div>
     </div>
     <div class="tab_content" id="tab2_content">
       <div class="tab_content_description">
-        <p class="c-txtsp">map info</p>
-        <p>{{ mapEvent }}</p>
+        <MapInfo :mapEvent="mapEvent" />
       </div>
     </div>
     <div class="tab_content" id="tab3_content">
       <div class="tab_content_description">
-        <p class="c-txtsp">commit info</p>
+        <CommitInfo
+          @moveToNext="moveToNext"
+          :sidebarEvent="sidebarEvent"
+          :userInfo="userInfo"
+        />
       </div>
     </div>
     <div class="tab_content" id="tab4_content">
       <div class="tab_content_description">
-        <p class="c-txtsp">ranking info</p>
+        <RankingInfo />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import MapInfo from "./MapInfo.vue";
+import UserInfo from "./UserInfo.vue";
+import RankingInfo from "./RankingInfo.vue";
+import CommitInfo from "./CommitInfo.vue";
+
 export default {
   props: {
     mapEvent: Object,
+    sidebarEvent: Object,
+    userInfo: Object,
+  },
+  components: {
+    MapInfo,
+    UserInfo,
+    RankingInfo,
+    CommitInfo,
+  },
+  data: function () {
+    return {};
+  },
+  methods: {
+    moveToNext(event) {
+      this.$emit("SidebarEvent", event);
+    },
   },
 };
 </script>

@@ -25,13 +25,20 @@ export default {
   props: {
     user_x: Number,
     user_y: Number,
+    moveFlag: Boolean,
   },
   methods: {
     mouseOverAction() {
-      this.color = "red";
+      this.color = "black";
     },
     mouseLeaveAction() {
-      this.color = "black";
+      //this.color = "black";
+    },
+  },
+  watch: {
+    moveFlag(flag) {
+      if (flag) this.color = "red";
+      else this.color = "black";
     },
   },
 };
