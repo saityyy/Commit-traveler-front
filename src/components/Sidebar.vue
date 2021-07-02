@@ -20,7 +20,11 @@
     </div>
     <div class="tab_content" id="tab3_content">
       <div class="tab_content_description">
-        <CommitInfo :userInfo="userInfo" />
+        <CommitInfo
+          @moveToNext="moveToNext"
+          :sidebarEvent="sidebarEvent"
+          :userInfo="userInfo"
+        />
       </div>
     </div>
     <div class="tab_content" id="tab4_content">
@@ -40,6 +44,7 @@ import CommitInfo from "./CommitInfo.vue";
 export default {
   props: {
     mapEvent: Object,
+    sidebarEvent: Object,
     userInfo: Object,
   },
   components: {
@@ -50,6 +55,11 @@ export default {
   },
   data: function () {
     return {};
+  },
+  methods: {
+    moveToNext(event) {
+      this.$emit("SidebarEvent", event);
+    },
   },
 };
 </script>

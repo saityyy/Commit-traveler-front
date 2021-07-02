@@ -56,7 +56,7 @@
       :height="bottomMap"
       fill="#999999bb"
     />
-    <User :user_x="user_x" :user_y="user_y" />
+    <User :user_x="user_x" :user_y="user_y" :moveFlag="userMoveFlag" />
   </svg>
 </template>
 
@@ -81,6 +81,7 @@ export default {
       canMove: false,
       nodeEvent: null,
       nodeEventId: "",
+      userMoveFlag: false,
       user_x: -10000,
       user_y: -10000,
     };
@@ -91,6 +92,8 @@ export default {
     User,
   },
   props: {
+    mapEvent: Object,
+    sidebarEvent: Object,
     userInfo: Object,
   },
   created() {
@@ -107,9 +110,19 @@ export default {
   //変数が変更された時にメソッドを呼び出す
   watch: {
     userInfo(updatedInfo) {
+      console.log("Map.vue 112");
       console.log(updatedInfo);
       this.user_x = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].x) + 40;
       this.user_y = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].y) - 50;
+    },
+    sidebarEvent: {
+      handler: function (updatedInfo) {
+        if (this.sidebarEvent.moveToNext.userMovingFlag) {
+          this.userMoveFlag = true;
+          this.moveUser(updatedInfo.moveToNext.nextNode);
+        }
+      },
+      deep: true,
     },
   },
   //watchとほぼ同じだが、こっちは監視する変数を指定する必要がない
@@ -129,6 +142,37 @@ export default {
     },
   },
   methods: {
+    //実装汚い
+    moveUser(nextNode) {
+      console.log("moveUser");
+      const dx = nextNode.x - this.user_x + 40;
+      const dy = nextNode.y - this.user_y - 50;
+      const current_x = this.user_x;
+      const current_y = this.user_y;
+      var sum_x = 0;
+      var sum_y = 0;
+      var count = 0;
+      const moveMilliSecond = 4000;
+      var move = setInterval(
+        function () {
+          count += 1;
+          console.log("setInterval");
+          this.user_x = 300;
+          sum_x += dx / 100.0;
+          sum_y += dy / 100.0;
+          this.user_x = current_x + Math.floor(sum_x);
+          this.user_y = current_y + Math.floor(sum_y);
+          if (count >= 100) {
+            console.log("setTimeout");
+            this.user_x = parseInt(nextNode.x) + 40;
+            this.user_y = parseInt(nextNode.y) - 50;
+            this.endMove();
+            clearInterval(move);
+          }
+        }.bind(this), //vueのデータを参照するには.bind(this)をつける
+        moveMilliSecond / 100
+      );
+    },
     mouseOverAction() {
       this.color = "black";
     },
@@ -152,9 +196,14 @@ export default {
       }
     },
     selectedNode(selectedNodeInfo) {
-      this.$emit("commitInfo", selectedNodeInfo);
+      this.$emit("MapEvent", selectedNodeInfo);
       this.nodeEvent = selectedNodeInfo;
       this.nodeEventId = selectedNodeInfo.id;
+    },
+    endMove() {
+      this.userMoveFlag = false;
+      this.sidebarEvent.moveToNext.userMovingFlag = false;
+      this.$emit("SidebarEvent", this.sidebarEvent);
     },
   },
 };

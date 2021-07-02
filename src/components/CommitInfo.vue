@@ -33,29 +33,27 @@ export default {
     };
   },
   props: {
+    sidebarEvent: Object,
     userInfo: Object,
   },
   watch: {
     userInfo(updatedInfo) {
       this.user_node = mapdata[parseInt(updatedInfo.node_id) - 1];
-      console.log(this.user_node.nextNode);
       this.user_step = updatedInfo.step;
       this.show_flag = true;
+      //userのコミット情報を取得する
+      this.axios
+        .get("http://localhost:3000/api/get-commit")
+        .then((res) => {
+          console.log(res.data);
+          this.all_commit = res.data.all_commit;
+          this.commit = res.data.commit;
+          this.table_commit = res.data.table_commit;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
-  },
-  beforeCreate() {
-    //userのコミット情報を取得する
-    this.axios
-      .get("http://localhost:3000/api/get-commit")
-      .then((res) => {
-        console.log(res.data);
-        this.all_commit = res.data.all_commit;
-        this.commit = res.data.commit;
-        this.table_commit = res.data.table_commit;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
   },
   methods: {
     moveToNext() {
@@ -81,6 +79,9 @@ export default {
         )
         .then((res) => {
           console.log(res.data);
+          this.sidebarEvent.moveToNext.userMovingFlag = true;
+          this.sidebarEvent.moveToNext.nextNode = mapdata[parseInt(node) - 1];
+          this.$emit("moveToNext", this.sidebarEvent);
         })
         .catch((e) => {
           console.log(e);
