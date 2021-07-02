@@ -1,11 +1,11 @@
 <template>
   <div class="header">
     <div class="mark">codeGo</div>
-    <img class="logo" src="../assets/icon.png" width="35px" height="35px" />
+    <img class="logo" src="../assets/icon.png" width="38px" height="38px"/>
     <div class="name">ようこそ？？？さん</div>
     <div class="Timer">
-      <p>{{date}}</p>
-      <p>{{time}}</p>
+      <p class="date">{{date}}</p>
+      <p class="time">{{time}}</p>
     </div>
   </div>
 </template>
@@ -52,14 +52,22 @@ export default {
 }
 .logo{
   float:right;
-  padding-right:60px;
+  border-radius:50%;
+  position:absolute;
+  top:3px;
+  right:40px;
 }
 .name{
   float:right;
   font-size:10px;
   padding-top:44px;
+  padding-right:15px;
 }
 .Timer{
   float:right;
+  font-size:17px;
+  position:absolute;
+  right:220px;
 }
+
 </style>
