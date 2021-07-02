@@ -65,9 +65,16 @@ export default {
 }
 .Timer{
   float:right;
-  font-size:17px;
+  font-size:19px;
   position:absolute;
   right:220px;
+}
+.date{
+  margin:3px;
+}
+
+.time{
+  margin:3px;
 }
 
 </style>
