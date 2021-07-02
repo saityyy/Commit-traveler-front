@@ -1,18 +1,18 @@
 <template>
   <div class="header">
     <div class="mark">codeGo</div>
-    <img src="../assets/icon.png" width="20px" height="20px" />
+    <img class="logo" src="../assets/icon.png" width="35px" height="35px" />
     <div class="name">ようこそ？？？さん</div>
-    <div id="Timer">
-      <p>{{ date }}</p>
-      <p>{{ time }}</p>
+    <div class="Timer">
+      <p>{{date}}</p>
+      <p>{{time}}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  el: "#Timer",
+  name: "Timer",
   data: function () {
     return {
       date: "",
@@ -41,5 +41,25 @@ export default {
   background-color: #37beb0;
   height: 60px;
   margin-bottom: 30px;
+}
+.mark{
+  float:left;
+  font-size:35px;
+  font-family:fantasy;
+  color:rgb(243,126,100);
+  padding-top:8px;
+  padding-left:15px;
+}
+.logo{
+  float:right;
+  padding-right:60px;
+}
+.name{
+  float:right;
+  font-size:10px;
+  padding-top:44px;
+}
+.Timer{
+  float:right;
 }
 </style>
