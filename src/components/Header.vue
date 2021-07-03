@@ -1,13 +1,17 @@
 <template>
   <div class="header">
     <div class="mark">codeGo</div>
-    <img
-      class="logo"
-      :src="'https://avatars.githubusercontent.com/' + userInfo.name + '?s=500'"
-      width="38px"
-      height="38px"
-    />
-    <div class="name">ようこそ{{ userInfo.name }}さん</div>
+    <div class="userInfo">
+      <img
+        class="logo"
+        :src="
+          'https://avatars.githubusercontent.com/' + userInfo.name + '?s=500'
+        "
+        width="45px"
+        height="45px"
+      />
+      <div class="name">ようこそ{{ userInfo.name }}さん</div>
+    </div>
     <div class="Timer">
       <p class="date">{{ date }}</p>
       <p class="time">{{ time }}</p>
@@ -55,36 +59,35 @@ export default {
   font-size: 35px;
   font-family: fantasy;
   color: rgb(243, 126, 100);
-  padding-top: 8px;
-  padding-left: 15px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.userInfo {
+  float: right;
+  position:absolute;
+  top:5px;
+  right:30px;
 }
 .logo {
-  float: right;
   border-radius: 50%;
-  position: absolute;
-  top: 3px;
-  right: 40px;
 }
 .name {
-  float: right;
-  font-size: 13px;
-  padding-top: 44px;
-  padding-right: 15px;
-  font-family: sans-serif;
-  font-weight: bold;
+  font-size: 14px;
+  font-family:sans-serif;
+  font-weight:bold;
 }
 .Timer {
   float: right;
-  font-size: 22px;
+  font-size: 25px;
   position: absolute;
-  right: 220px;
+  right: 250px;
   font-family: Franklin Gothic Medium;
 }
 .date {
-  margin: 3px;
+  margin: 8px;
 }
 
 .time {
-  margin: 3px;
+  margin: 5px;
 }
 </style>
