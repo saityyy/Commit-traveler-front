@@ -27,8 +27,8 @@
       <h3>推しの言語を入力してください</h3>
       <select v-model="programming_language">
         <option disabled value="">プログラミング言語</option>
-        <option v-for="lang in programming_language_list" :key="lang">
-          {{ lang }}
+        <option v-for="lang in programming_language_list" :key="lang.name">
+          {{ lang.name }}
         </option>
       </select>
     </div>
@@ -98,6 +98,7 @@ export default {
         .then((res) => {
           console.log("get-langs");
           console.log(res.data);
+          this.programming_language_list = res.data;
         })
         .catch((e) => {
           console.log(e);
@@ -133,6 +134,8 @@ export default {
       this.next_node = document.getElementById("button").getAttribute("value");
     },
     moveToNext() {
+      this.show_flag = false;
+      this.next_node_type = "node";
       //同じノードでthis.commit分進める場合
       var node = this.user_node.id;
       var commit_count = this.all_commit;
@@ -145,10 +148,6 @@ export default {
         node = this.next_node;
       }
       this.next_node = 0;
-      console.log("aaa");
-      console.log(this.user_node.id);
-      console.log(node);
-      console.log(mapdata[parseInt(node) - 1]);
       if (
         this.user_node.id != node &&
         mapdata[parseInt(node) - 1].type == "checkpoint"
