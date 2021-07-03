@@ -201,7 +201,7 @@
     },
     {
         "id": "21",
-        "type": "node",
+        "type": "checkpoint",
         "x": "1200",
         "y": "1900",
         "step": 5,
@@ -396,6 +396,446 @@
         "type": "node",
         "x": "1700",
         "y": "2000",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "46",
+        "type": "node",
+        "x": "2800",
+        "y": "100",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "47",
+        "type": "node",
+        "x": "2100",
+        "y": "150",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "48",
+        "type": "checkpoint",
+        "x": "1600",
+        "y": "80",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "49",
+        "type": "start",
+        "x": "2600",
+        "y": "600",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "50",
+        "type": "node",
+        "x": "2100",
+        "y": "1000",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "51",
+        "type": "node",
+        "x": "2400",
+        "y": "1300",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "52",
+        "type": "node",
+        "x": "2700",
+        "y": "1000",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "53",
+        "type": "node",
+        "x": "2100",
+        "y": "1500",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "54",
+        "type": "node",
+        "x": "1500",
+        "y": "1000",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "55",
+        "type": "node",
+        "x": "1700",
+        "y": "800",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "56",
+        "type": "node",
+        "x": "1700",
+        "y": "1700",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "57",
+        "type": "node",
+        "x": "1300",
+        "y": "1600",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "58",
+        "type": "node",
+        "x": "1300",
+        "y": "2800",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "59",
+        "type": "node",
+        "x": "1356",
+        "y": "2200",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "60",
+        "type": "node",
+        "x": "1600",
+        "y": "2900",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "61",
+        "type": "node",
+        "x": "2000",
+        "y": "2850",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "62",
+        "type": "node",
+        "x": "2200",
+        "y": "2600",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "63",
+        "type": "node",
+        "x": "1860",
+        "y": "2300",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "64",
+        "type": "node",
+        "x": "1270",
+        "y": "2500",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "65",
+        "type": "node",
+        "x": "1030",
+        "y": "1650",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "66",
+        "type": "node",
+        "x": "1000",
+        "y": "2160",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "67",
+        "type": "node",
+        "x": "100",
+        "y": "2920",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "68",
+        "type": "node",
+        "x": "920",
+        "y": "2760",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "69",
+        "type": "node",
+        "x": "700",
+        "y": "2550",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "70",
+        "type": "node",
+        "x": "400",
+        "y": "2700",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "71",
+        "type": "node",
+        "x": "180",
+        "y": "2090",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "72",
+        "type": "node",
+        "x": "600",
+        "y": "2890",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "73",
+        "type": "node",
+        "x": "2800",
+        "y": "2860",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "74",
+        "type": "node",
+        "x": "1440",
+        "y": "2710",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "75",
+        "type": "node",
+        "x": "2840",
+        "y": "1560",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "76",
+        "type": "node",
+        "x": "2740",
+        "y": "360",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "77",
+        "type": "node",
+        "x": "2340",
+        "y": "1590",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "78",
+        "type": "node",
+        "x": "220",
+        "y": "2560",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "79",
+        "type": "node",
+        "x": "2340",
+        "y": "460",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "80",
+        "type": "node",
+        "x": "2540",
+        "y": "230",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "81",
+        "type": "node",
+        "x": "1240",
+        "y": "160",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "82",
+        "type": "node",
+        "x": "1460",
+        "y": "460",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "83",
+        "type": "node",
+        "x": "1500",
+        "y": "1800",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "84",
+        "type": "node",
+        "x": "2440",
+        "y": "960",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "85",
+        "type": "node",
+        "x": "2740",
+        "y": "1360",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "86",
+        "type": "node",
+        "x": "2780",
+        "y": "760",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "87",
+        "type": "node",
+        "x": "2140",
+        "y": "1260",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "88",
+        "type": "node",
+        "x": "1440",
+        "y": "1290",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "89",
+        "type": "node",
+        "x": "1810",
+        "y": "1470",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "90",
+        "type": "node",
+        "x": "1770",
+        "y": "290",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "91",
+        "type": "node",
+        "x": "1840",
+        "y": "968",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "92",
+        "type": "node",
+        "x": "1440",
+        "y": "670",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "93",
+        "type": "node",
+        "x": "190",
+        "y": "1200",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "94",
+        "type": "node",
+        "x": "2140",
+        "y": "2100",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "95",
+        "type": "node",
+        "x": "1930",
+        "y": "2580",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "96",
+        "type": "node",
+        "x": "2480",
+        "y": "2580",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "97",
+        "type": "node",
+        "x": "140",
+        "y": "1600",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "98",
+        "type": "node",
+        "x": "2040",
+        "y": "1700",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "99",
+        "type": "node",
+        "x": "1540",
+        "y": "2300",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "100",
+        "type": "node",
+        "x": "1910",
+        "y": "760",
         "step": 5,
         "nextNode": []
     }
