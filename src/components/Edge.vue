@@ -40,7 +40,7 @@ export default {
       //双方向連結かどうかの判定
       else if (
         this.toNode.id == this.nodeEvent.id &&
-        this.nodeEvent.nextNode.includes(parseInt(this.fromNode.id.slice(-1)))
+        this.nodeEvent.nextNode.includes(parseInt(this.fromNode.id))
       ) {
         return "red";
       }

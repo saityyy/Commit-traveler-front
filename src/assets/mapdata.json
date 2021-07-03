@@ -147,5 +147,256 @@
         "nextNode": [
             7
         ]
+    },
+    {
+        "id": "15",
+        "type": "start",
+        "x": "1200",
+        "y": "900",
+        "step": 5,
+        "nextNode": [
+            7,
+            16
+        ]
+    },
+    {
+        "id": "16",
+        "type": "node",
+        "x": "1200",
+        "y": "400",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "17",
+        "type": "node",
+        "x": "600",
+        "y": "1200",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "18",
+        "type": "node",
+        "x": "300",
+        "y": "1400",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "19",
+        "type": "node",
+        "x": "700",
+        "y": "1400",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "20",
+        "type": "checkpoint",
+        "x": "700",
+        "y": "1600",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "21",
+        "type": "node",
+        "x": "1200",
+        "y": "1900",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "22",
+        "type": "node",
+        "x": "400",
+        "y": "1700",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "23",
+        "type": "node",
+        "x": "1700",
+        "y": "500",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "24",
+        "type": "checkpoint",
+        "x": "1800",
+        "y": "1200",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "25",
+        "type": "node",
+        "x": "2000",
+        "y": "500",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "26",
+        "type": "node",
+        "x": "1600",
+        "y": "1400",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "27",
+        "type": "node",
+        "x": "1700",
+        "y": "2500",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "28",
+        "type": "checkpoint",
+        "x": "2200",
+        "y": "700",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "29",
+        "type": "node",
+        "x": "1000",
+        "y": "2500",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "30",
+        "type": "node",
+        "x": "400",
+        "y": "2300",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "31",
+        "type": "node",
+        "x": "1100",
+        "y": "1100",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "32",
+        "type": "node",
+        "x": "1200",
+        "y": "1300",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "33",
+        "type": "node",
+        "x": "1000",
+        "y": "1400",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "34",
+        "type": "node",
+        "x": "500",
+        "y": "2000",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "35",
+        "type": "node",
+        "x": "900",
+        "y": "1900",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "36",
+        "type": "checkpoint",
+        "x": "700",
+        "y": "2300",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "37",
+        "type": "start",
+        "x": "2900",
+        "y": "1900",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "38",
+        "type": "node",
+        "x": "2700",
+        "y": "2100",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "39",
+        "type": "node",
+        "x": "2600",
+        "y": "1700",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "40",
+        "type": "node",
+        "x": "2700",
+        "y": "2500",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "41",
+        "type": "checkpoint",
+        "x": "2300",
+        "y": "2300",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "42",
+        "type": "node",
+        "x": "2300",
+        "y": "1900",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "43",
+        "type": "node",
+        "x": "2400",
+        "y": "2900",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "44",
+        "type": "node",
+        "x": "1900",
+        "y": "1900",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "45",
+        "type": "node",
+        "x": "1700",
+        "y": "2000",
+        "step": 5,
+        "nextNode": []
     }
 ]
