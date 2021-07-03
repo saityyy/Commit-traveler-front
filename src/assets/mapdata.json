@@ -37,7 +37,7 @@
         "id": "4",
         "type": "node",
         "x": "600",
-        "y": "600",
+        "y": "530",
         "step": 5,
         "nextNode": [
             5,
@@ -130,13 +130,11 @@
     },
     {
         "id": "13",
-        "type": "start",
-        "x": "400",
-        "y": "900",
+        "type": "node",
+        "x": "350",
+        "y": "860",
         "step": 5,
-        "nextNode": [
-            11
-        ]
+        "nextNode": []
     },
     {
         "id": "14",
@@ -150,14 +148,11 @@
     },
     {
         "id": "15",
-        "type": "start",
+        "type": "node",
         "x": "1200",
         "y": "900",
         "step": 5,
-        "nextNode": [
-            7,
-            16
-        ]
+        "nextNode": []
     },
     {
         "id": "16",
@@ -209,7 +204,7 @@
     },
     {
         "id": "22",
-        "type": "node",
+        "type": "start",
         "x": "400",
         "y": "1700",
         "step": 5,
@@ -289,7 +284,7 @@
     },
     {
         "id": "32",
-        "type": "node",
+        "type": "checkpoint",
         "x": "1200",
         "y": "1300",
         "step": 5,
@@ -321,7 +316,7 @@
     },
     {
         "id": "36",
-        "type": "checkpoint",
+        "type": "node",
         "x": "700",
         "y": "2300",
         "step": 5,
@@ -449,7 +444,7 @@
     },
     {
         "id": "52",
-        "type": "node",
+        "type": "checkpoint",
         "x": "2700",
         "y": "1000",
         "step": 5,
@@ -465,7 +460,7 @@
     },
     {
         "id": "54",
-        "type": "node",
+        "type": "start",
         "x": "1500",
         "y": "1000",
         "step": 5,
@@ -529,7 +524,7 @@
     },
     {
         "id": "62",
-        "type": "node",
+        "type": "start",
         "x": "2200",
         "y": "2600",
         "step": 5,
@@ -577,7 +572,7 @@
     },
     {
         "id": "68",
-        "type": "node",
+        "type": "start",
         "x": "920",
         "y": "2760",
         "step": 5,
@@ -585,7 +580,7 @@
     },
     {
         "id": "69",
-        "type": "node",
+        "type": "checkpoint",
         "x": "700",
         "y": "2550",
         "step": 5,
@@ -601,7 +596,7 @@
     },
     {
         "id": "71",
-        "type": "node",
+        "type": "checkpoint",
         "x": "180",
         "y": "2090",
         "step": 5,
@@ -617,7 +612,7 @@
     },
     {
         "id": "73",
-        "type": "node",
+        "type": "checkpoint",
         "x": "2800",
         "y": "2860",
         "step": 5,
@@ -649,7 +644,7 @@
     },
     {
         "id": "77",
-        "type": "node",
+        "type": "checkpoint",
         "x": "2340",
         "y": "1590",
         "step": 5,
@@ -673,7 +668,7 @@
     },
     {
         "id": "80",
-        "type": "node",
+        "type": "checkpoint",
         "x": "2540",
         "y": "230",
         "step": 5,
@@ -689,7 +684,7 @@
     },
     {
         "id": "82",
-        "type": "node",
+        "type": "checkpoint",
         "x": "1460",
         "y": "460",
         "step": 5,
@@ -697,7 +692,7 @@
     },
     {
         "id": "83",
-        "type": "node",
+        "type": "start",
         "x": "1500",
         "y": "1800",
         "step": 5,
@@ -825,7 +820,7 @@
     },
     {
         "id": "99",
-        "type": "node",
+        "type": "checkpoint",
         "x": "1540",
         "y": "2300",
         "step": 5,
@@ -836,6 +831,14 @@
         "type": "node",
         "x": "1910",
         "y": "760",
+        "step": 5,
+        "nextNode": []
+    },
+    {
+        "id": "101",
+        "type": "checkpoint",
+        "x": "1100",
+        "y": "700",
         "step": 5,
         "nextNode": []
     }
