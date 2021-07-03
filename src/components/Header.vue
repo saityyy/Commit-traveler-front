@@ -40,9 +40,21 @@ export default {
     Time: function () {
       let now = new Date();
       this.time =
-        now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+        this.timeedit(now.getHours(), 2) +
+        ":" +
+        this.timeedit(now.getMinutes(), 2) +
+        ":" +
+        this.timeedit(now.getSeconds(), 2);
       this.date =
         now.getFullYear() + "/" + (now.getMonth() + 1) + "/" + now.getDate();
+    },
+    timeedit: function (func, num) {
+      let zero = "";
+      for (let i = 0; i < num; i++) {
+        zero += "0";
+      }
+
+      return (zero + func).slice(-num);
     },
   },
 };
@@ -64,17 +76,17 @@ export default {
 }
 .userInfo {
   float: right;
-  position:absolute;
-  top:5px;
-  right:30px;
+  position: absolute;
+  top: 5px;
+  right: 30px;
 }
 .logo {
   border-radius: 50%;
 }
 .name {
   font-size: 14px;
-  font-family:sans-serif;
-  font-weight:bold;
+  font-family: sans-serif;
+  font-weight: bold;
 }
 .Timer {
   float: right;
