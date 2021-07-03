@@ -10,7 +10,7 @@
     <label class="tab_item" for="tab4">ランキング</label>
     <div class="tab_content" id="tab1_content">
       <div class="tab_content_description">
-        <UserInfo />
+        <UserInfo :userInfo="userInfo"/>
       </div>
     </div>
     <div class="tab_content" id="tab2_content">
