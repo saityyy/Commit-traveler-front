@@ -68,13 +68,17 @@ export default {
   methods: {
     moveToNext(e) {
       document.getElementById("tab3").click();
-      let nexts = document.getElementById("next-node-selector").children;
-      let id = e.currentTarget.getAttribute("value");
-      for (let n of nexts) {
-        if (n.innerHTML == id) {
-          n.selected = true;
-        }
-      }
+      document
+        .getElementById("button")
+        .setAttribute("value", e.currentTarget.getAttribute("value"));
+      document.getElementById("button").click();
+      //document.getElementById("next-node-selector").value = id;
+      //let nexts = document.getElementById("next-node-selector").children;
+      //for (let n of nexts) {
+      //if (n.innerHTML == id) {
+      //n.selected = true;
+      //}
+      //}
     },
     setBlinkingCls() {
       if (this.isCanBeDestination) return "blinking";

@@ -7,7 +7,9 @@
     <h1>あと{{ user_node.step - user_step }}ステップ</h1>
     <select v-model="next_node" id="next-node-selector">
       <option disabled value="">次に移動するマスを選択してください</option>
-      <option v-for="node in user_node.nextNode" :key="node">{{ node }}</option>
+      <option v-for="node in user_node.nextNode" :key="node" :value="node">
+        {{ node }}
+      </option>
     </select>
     <input v-model="comment" placeholder="ここにコメントを入力してください" />
     <p>
@@ -15,6 +17,7 @@
       >番のノード
     </p>
     <p>コメント :{{ comment }}</p>
+    <input type="button" @click="update_next_node" id="button" />
     <input
       type="button"
       value="マスをすすめる"
@@ -66,6 +69,7 @@ export default {
   computed: {
     disabledCommit: function () {
       //１マス進む場合
+      console.log(this.next_node);
       if (this.commit - (this.user_node.step - this.user_step) >= 0) {
         if (this.next_node == 0) return true;
         else {
@@ -82,6 +86,9 @@ export default {
     },
   },
   methods: {
+    update_next_node() {
+      this.next_node = document.getElementById("button").getAttribute("value");
+    },
     moveToNext() {
       //同じノードでthis.commit分進める場合
       var node = this.user_node.id;
@@ -143,4 +150,7 @@ export default {
 </script>
 
 <style>
+#button {
+  display: none;
+}
 </style>
