@@ -68,26 +68,17 @@ export default {
   methods: {
     moveToNext(e) {
       document.getElementById("tab3").click();
-      let nexts = document.getElementById("next-node-selector").children;
-      let id = e.currentTarget.getAttribute("value");
-      for (let n of nexts) {
-        if (n.innerHTML == id) {
-          n.selected = true;
-        }
-      }
+      document
+        .getElementById("button")
+        .setAttribute("value", e.currentTarget.getAttribute("value"));
+      document.getElementById("button").click();
     },
     setBlinkingCls() {
       if (this.isCanBeDestination) return "blinking";
       else return "no-blinking";
     },
-    //mouseOverAction() {
-    //this.$emit("selectedNode", this.nodeObj);
-    //},
-    //mouseLeaveAction() {
-    //this.color = "white";
-    //this.$emit("selectedNode", null);
-    //},
     mouseDblclickAction() {
+      document.getElementById("tab2").click();
       this.$emit("selectedNode", this.nodeObj);
     },
   },
