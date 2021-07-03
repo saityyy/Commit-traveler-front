@@ -37,6 +37,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import MapInfo from "./MapInfo.vue";
 import UserInfo from "./UserInfo.vue";
 import RankingInfo from "./RankingInfo.vue";

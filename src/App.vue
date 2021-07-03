@@ -91,7 +91,7 @@ export default {
       this.sidebarEvent = event;
       console.log(event);
     },
-    receiveReversiEvent: function(v = "blank", c = "#999"){
+    receiveReversiEvent: function(v = "blank", c = "#666"){
       this.selectLanguage = v;
       this.selectLanguageColor = c;
       this.showReversiLock= false;
