@@ -72,26 +72,13 @@ export default {
         .getElementById("button")
         .setAttribute("value", e.currentTarget.getAttribute("value"));
       document.getElementById("button").click();
-      //document.getElementById("next-node-selector").value = id;
-      //let nexts = document.getElementById("next-node-selector").children;
-      //for (let n of nexts) {
-      //if (n.innerHTML == id) {
-      //n.selected = true;
-      //}
-      //}
     },
     setBlinkingCls() {
       if (this.isCanBeDestination) return "blinking";
       else return "no-blinking";
     },
-    //mouseOverAction() {
-    //this.$emit("selectedNode", this.nodeObj);
-    //},
-    //mouseLeaveAction() {
-    //this.color = "white";
-    //this.$emit("selectedNode", null);
-    //},
     mouseDblclickAction() {
+      document.getElementById("tab2").click();
       this.$emit("selectedNode", this.nodeObj);
     },
   },
