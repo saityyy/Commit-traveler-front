@@ -9,6 +9,7 @@
           @MapEvent="receiveMapEvennt"
           @SidebarEvent="receiveSidebarEvent"
           :userInfo="userInfo"
+          :doneUserMoveEvent="doneUserMoveEvent"
         />
       </div>
       <div id="sidebar">
@@ -17,9 +18,16 @@
           :sidebarEvent="sidebarEvent"
           @SidebarEvent="receiveSidebarEvent"
           :userInfo="userInfo"
+          :showReversi="showReversi"
+          :receiveReversiEvent="receiveReversiEvent"
         />
       </div>
     </div>
+    <Reversi v-if="showReversi"
+        :selectLanguage="selectLanguage"
+        :selectLanguageColor="selectLanguageColor"
+        :closeReversiEvent="closeReversiEvent"
+    />
   </div>
 </template>
 
@@ -27,13 +35,14 @@
 import Map from "./components/Map.vue";
 import Sidebar from "./components/Sidebar.vue";
 import Header from "./components/Header.vue";
-
+import Reversi from "./components/Reversi.vue"
 export default {
   name: "App",
   components: {
     Header,
     Map,
     Sidebar,
+    Reversi,
   },
   data: function () {
     return {
@@ -42,6 +51,9 @@ export default {
         moveToNext: { userMovingFlag: false, nextNode: {} },
       },
       userInfo: {},
+      selectLanguage: "blank",
+      showReversi: false,
+      showReversiLock : true,
     };
   },
   beforeCreate() {
@@ -79,6 +91,22 @@ export default {
       this.sidebarEvent = event;
       console.log(event);
     },
+    receiveReversiEvent: function(v = "blank", c = "#999"){
+      this.selectLanguage = v;
+      this.selectLanguageColor = c;
+      this.showReversiLock= false;
+      console.log("showRevLock", this.showReversiLock);
+    },
+    doneUserMoveEvent: function(){
+      console.log("showRevLock", this.showReversiLock);
+      if(!this.showReversiLock){
+        this.showReversi = true;
+      }
+    },
+    closeReversiEvent: function(){
+      this.showReversi = false;
+      this.showReversiLock = true;
+    }
   },
 };
 </script>
@@ -106,12 +134,11 @@ body {
   width: 60%;
   float: left;
   border: solid;
+  position:relative;
 }
 #sidebar {
   height: 100%;
   width: 35%;
-  margin-right: 1%;
-  margin-left: 1%;
   float: right;
   border: solid;
 }

@@ -24,6 +24,7 @@
           @moveToNext="moveToNext"
           :sidebarEvent="sidebarEvent"
           :userInfo="userInfo"
+          :receiveReversiEvent="receiveReversiEvent"
         />
       </div>
     </div>
@@ -46,6 +47,8 @@ export default {
     mapEvent: Object,
     sidebarEvent: Object,
     userInfo: Object,
+    showReversi: Boolean,
+    receiveReversiEvent: Function
   },
   components: {
     MapInfo,

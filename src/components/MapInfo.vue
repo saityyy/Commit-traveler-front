@@ -62,7 +62,6 @@ export default {
       }
     },
     userInfo(updatedInfo) {
-      console.log(updatedInfo);
       if (updatedInfo) {
         this.current_node_id = updatedInfo.node_id;
         const _id = parseInt(this.current_node_id);
