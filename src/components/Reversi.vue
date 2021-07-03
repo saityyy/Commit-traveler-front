@@ -1,6 +1,6 @@
 <template>
 	<div class="content">
-		<button class="close-btn" @click="receiveReversiEvent">Close</button>
+		<button class="close-btn" @click="closeReversiEvent">Close</button>
 		<table>
 			<tr v-for="(row,idxR) in grids" :key="idxR">
 				<td v-for="(r, idxC) in row" :key="idxC">
@@ -17,15 +17,17 @@ export default {
 		return {
 			grids:[],
 			size:0,
+			done:false,
 		}
 	},
 	props:{
-		receiveReversiEvent: Function,
 		selectLanguage: String,
 		selectLanguageColor: String,
+		closeReversiEvent: Function,
 	},
 	methods:{
 		gridClicked(v){
+			if(this.done)return;
 			const n = this.grids.length;
 			let row = parseInt(v.currentTarget.getAttribute("row"));
 			let col = parseInt(v.currentTarget.getAttribute("col"));
@@ -64,6 +66,7 @@ export default {
 			.post("http://localhost:3000/api/set-reversi", this.grids)
 			.then(() => {
 				alert("石をおきました");
+				this.done = true;
 			})
 			.catch((e) => {
 				console.log(e);

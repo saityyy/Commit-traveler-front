@@ -9,6 +9,7 @@
           @MapEvent="receiveMapEvennt"
           @SidebarEvent="receiveSidebarEvent"
           :userInfo="userInfo"
+          :doneUserMoveEvent="doneUserMoveEvent"
         />
       </div>
       <div id="sidebar">
@@ -23,9 +24,9 @@
       </div>
     </div>
     <Reversi v-if="showReversi"
-        :receiveReversiEvent="receiveReversiEvent"
         :selectLanguage="selectLanguage"
         :selectLanguageColor="selectLanguageColor"
+        :closeReversiEvent="closeReversiEvent"
     />
   </div>
 </template>
@@ -52,6 +53,7 @@ export default {
       userInfo: {},
       selectLanguage: "blank",
       showReversi: false,
+      showReversiLock : true,
     };
   },
   beforeCreate() {
@@ -92,8 +94,18 @@ export default {
     receiveReversiEvent: function(v = "blank", c = "#999"){
       this.selectLanguage = v;
       this.selectLanguageColor = c;
-      this.showReversi = !this.showReversi;
-
+      this.showReversiLock= false;
+      console.log("showRevLock", this.showReversiLock);
+    },
+    doneUserMoveEvent: function(){
+      console.log("showRevLock", this.showReversiLock);
+      if(!this.showReversiLock){
+        this.showReversi = true;
+      }
+    },
+    closeReversiEvent: function(){
+      this.showReversi = false;
+      this.showReversiLock = true;
     }
   },
 };

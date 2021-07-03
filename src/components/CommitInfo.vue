@@ -50,12 +50,6 @@
       @click="moveToNext"
       :disabled="disabledCommit"
     />
-    <input
-      type="button"
-      value="石を置く"
-      @click='clickReceiveReversiEvent'
-      v-if="next_node_type == 'checkpoint'"
-    />
   </div>
 </template>
 
@@ -137,13 +131,20 @@ export default {
       const res = this.programming_language_list.find((v)=>{
         return v.name === this.programming_language;
       })
-      console.log(res.color);
       this.receiveReversiEvent(this.programming_language, res.color);
     },
     update_next_node() {
       this.next_node = document.getElementById("button").getAttribute("value");
     },
     moveToNext() {
+      console.log(this.disabledCommit);
+      if(this.next_node_type == 'checkpoint'){//リバーシ用に言語と色を送信する。画面推移が起こるイベントはここではなくUserが動き終わった後。
+      const res = this.programming_language_list.find((v)=>{
+        return v.name === this.programming_language;
+      })
+      this.receiveReversiEvent(this.programming_language, res.color);
+      }
+
       this.show_flag = false;
       this.next_node_type = "node";
       //同じノードでthis.commit分進める場合

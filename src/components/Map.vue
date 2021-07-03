@@ -97,6 +97,7 @@ export default {
     mapEvent: Object,
     sidebarEvent: Object,
     userInfo: Object,
+    doneUserMoveEvent: Function,
   },
   created() {
     //マップデータベース更新
@@ -169,6 +170,7 @@ export default {
             this.user_x = parseInt(nextNode.x);
             this.user_y = parseInt(nextNode.y);
             this.endMove();
+            this.doneUserMoveEvent();
             clearInterval(move);
           }
         }.bind(this), //vueのデータを参照するには.bind(this)をつける
