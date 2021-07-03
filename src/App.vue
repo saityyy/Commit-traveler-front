@@ -17,9 +17,15 @@
           :sidebarEvent="sidebarEvent"
           @SidebarEvent="receiveSidebarEvent"
           :userInfo="userInfo"
+          :showReversi="showReversi"
+          :receiveReversiEvent="receiveReversiEvent"
         />
       </div>
     </div>
+    <Reversi v-if="showReversi"
+        :receiveReversiEvent="receiveReversiEvent"
+        :selectLanguage="selectLanguage"
+    />
   </div>
 </template>
 
@@ -27,13 +33,14 @@
 import Map from "./components/Map.vue";
 import Sidebar from "./components/Sidebar.vue";
 import Header from "./components/Header.vue";
-
+import Reversi from "./components/Reversi.vue"
 export default {
   name: "App",
   components: {
     Header,
     Map,
     Sidebar,
+    Reversi,
   },
   data: function () {
     return {
@@ -42,6 +49,8 @@ export default {
         moveToNext: { userMovingFlag: false, nextNode: {} },
       },
       userInfo: {},
+      selectLanguage: "blank",
+      showReversi: false,
     };
   },
   beforeCreate() {
@@ -79,6 +88,11 @@ export default {
       this.sidebarEvent = event;
       console.log(event);
     },
+    receiveReversiEvent: function(v = "blank"){
+      this.selectLanguage = v;
+      this.showReversi = !this.showReversi;
+
+    }
   },
 };
 </script>
@@ -106,12 +120,11 @@ body {
   width: 60%;
   float: left;
   border: solid;
+  position:relative;
 }
 #sidebar {
   height: 100%;
   width: 35%;
-  margin-right: 1%;
-  margin-left: 1%;
   float: right;
   border: solid;
 }

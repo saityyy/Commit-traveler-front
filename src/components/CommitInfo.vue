@@ -50,6 +50,12 @@
       @click="moveToNext"
       :disabled="disabledCommit"
     />
+    <input
+      type="button"
+      value="石を置く"
+      @click='clickReceiveReversiEvent'
+      v-if="next_node_type == 'checkpoint'"
+    />
   </div>
 </template>
 
@@ -75,6 +81,7 @@ export default {
   props: {
     sidebarEvent: Object,
     userInfo: Object,
+    receiveReversiEvent: Function,
   },
   watch: {
     userInfo(updatedInfo) {
@@ -85,7 +92,6 @@ export default {
       this.axios
         .get("http://localhost:3000/api/get-commit")
         .then((res) => {
-          console.log(res.data);
           this.all_commit = res.data.all_commit;
           this.commit = res.data.commit;
           this.table_commit = res.data.table_commit;
@@ -96,8 +102,6 @@ export default {
       this.axios
         .get("http://localhost:3000/api/get-langs")
         .then((res) => {
-          console.log("get-langs");
-          console.log(res.data);
           this.programming_language_list = res.data;
         })
         .catch((e) => {
@@ -112,7 +116,6 @@ export default {
   computed: {
     disabledCommit: function () {
       //１マス進む場合
-      console.log(this.next_node);
       if (this.commit - (this.user_node.step - this.user_step) >= 0) {
         if (this.next_node == 0) return true;
         else {
@@ -130,6 +133,9 @@ export default {
     },
   },
   methods: {
+    clickReceiveReversiEvent(){
+      this.receiveReversiEvent(this.programming_language);
+    },
     update_next_node() {
       this.next_node = document.getElementById("button").getAttribute("value");
     },
