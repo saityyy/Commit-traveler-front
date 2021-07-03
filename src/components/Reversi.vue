@@ -31,18 +31,20 @@ export default {
 			const n = this.grids.length;
 			let row = parseInt(v.currentTarget.getAttribute("row"));
 			let col = parseInt(v.currentTarget.getAttribute("col"));
-			const dfs = (i, j, di, dj, dist)=>{
+			const dfs = (i, j, di, dj)=>{
 				i += di;
 				j += dj;
-				dist++;
 				if(i >= n || j >=n || i < 0 || j < 0)return false;
 				if(this.grids[i][j].name === "blank")return false;
 				if(this.grids[i][j].name === this.selectLanguage){
 					return true;
 				}else{
-					if(dfs(i,j,di,dj,dist)){
+					if(dfs(i,j,di,dj)){
 						this.grids[i][j].color = this.selectLanguageColor;
 						this.grids[i][j].name = this.selectLanguage;
+						return true;
+					}else{
+						return false;
 					}
 				}
 			}
@@ -53,14 +55,14 @@ export default {
 				}
 				this.grids[row][col].name = this.selectLanguage;
 				this.grids[row][col].color = this.selectLanguageColor;
-				dfs(row,col,-1,-1, 0);
-				dfs(row,col,-1,0, 0);
-				dfs(row,col,-1,1, 0);
-				dfs(row,col,0,-1, 0);
-				dfs(row,col,0,1, 0);
-				dfs(row,col,1,-1, 0);
-				dfs(row,col,1,0, 0);
-				dfs(row,col,1,1, 0);
+				dfs(row,col,-1,-1);
+				dfs(row,col,-1,0);
+				dfs(row,col,-1,1);
+				dfs(row,col,0,-1);
+				dfs(row,col,0,1);
+				dfs(row,col,1,-1);
+				dfs(row,col,1,0);
+				dfs(row,col,1,1);
 			}
 			this.axios
 			.post("http://localhost:3000/api/set-reversi", this.grids)

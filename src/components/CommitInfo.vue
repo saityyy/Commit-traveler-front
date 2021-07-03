@@ -1,7 +1,7 @@
 <template>
   <div id="commitinfo" v-if="show_flag">
     <h2>
-      動かせるstep数 : <span>{{ commit }}</span>
+      たいりょく : <span>{{ commit }}</span>
     </h2>
     <!--
     <h2>
@@ -13,26 +13,31 @@
       id="select_next_node"
       v-if="this.commit - (this.user_node.step - this.user_step) >= 0"
     >
-      <h3>次に進むノードを選択してください</h3>
+      <h3>ゆき先</h3>
+      <div class="center">
       <select v-model="next_node" id="next-node-selector">
         <option disabled value="">次に移動するマスを選択してください</option>
         <option v-for="node in user_node.nextNode" :key="node" :value="node">
           {{ node }}
         </option>
-      </select>
+      </select></div>
     </div>
     <div id="comment" v-if="next_node_type == 'checkpoint'">
-      <h3>コメントを入力してください</h3>
+      <h3>なにかひとこと</h3>
+      <div class="center">
       <input v-model="comment" placeholder="ここにコメントを入力してください" />
+      </div>
     </div>
     <div id="lang" v-if="next_node_type == 'checkpoint'">
-      <h3>推しの言語を入力してください</h3>
+      <h3>推しの言語は！？</h3>
+      <div class="center">
       <select v-model="programming_language">
         <option disabled value="">プログラミング言語</option>
         <option v-for="lang in programming_language_list" :key="lang.name">
           {{ lang.name }}
         </option>
       </select>
+      </div>
     </div>
     <div id="check" v-if="next_node != 0">
       <h3>下記の内容でマップを進めます</h3>
@@ -46,7 +51,7 @@
       </p>
     </div>
     <input type="button" @click="update_next_node" id="button" />
-    <div style="text-align:center;">
+    <div class="center">
     <input
       type="button"
       value="マスをすすめる"
@@ -223,5 +228,11 @@ opacity: 0.6;
   background-color:#37beb0;
   padding:10px;
   border:solid 3px #c3c3c3;
+}
+select{
+  width:70%;
+}
+input{
+  width:70%;
 }
 </style>
