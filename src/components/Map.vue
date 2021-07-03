@@ -26,6 +26,7 @@
       <Node
         :nodeObj="node"
         :nodeEventId="nodeEventId"
+        :isCanBeDestination="isCanBeDestination(node.id)"
         @selectedNode="selectedNode"
       />
     </g>
@@ -84,6 +85,7 @@ export default {
       userMoveFlag: false,
       user_x: -10000,
       user_y: -10000,
+      user_node: {},
     };
   },
   components: {
@@ -112,6 +114,7 @@ export default {
     userInfo(updatedInfo) {
       this.user_x = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].x);
       this.user_y = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].y);
+      this.user_node = mapdata[parseInt(updatedInfo.node_id) - 1];
     },
     sidebarEvent: {
       handler: function (updatedInfo) {
@@ -140,6 +143,10 @@ export default {
     },
   },
   methods: {
+    isCanBeDestination(id) {
+      if (!this.user_node.nextNode) return false;
+      return this.user_node.nextNode.includes(parseInt(id));
+    },
     //実装汚い
     moveUser(nextNode) {
       const dx = nextNode.x - this.user_x;

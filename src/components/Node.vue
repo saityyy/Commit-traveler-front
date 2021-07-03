@@ -13,6 +13,15 @@
       :cy="node_y"
       r="20"
     ></circle>
+    <circle
+      :cx="node_x"
+      :cy="node_y"
+      r="30"
+      class="blinking"
+      @click="moveToNext"
+      :value="nodeObj.id"
+      v-if="isCanBeDestination"
+    ></circle>
     <text :x="node_x - 40" :y="node_y - 40" font-size="30">{{ node_id }}</text>
     <text
       v-if="node_type == 'start'"
@@ -39,6 +48,7 @@ export default {
   props: {
     nodeObj: Object,
     nodeEventId: String,
+    isCanBeDestination: Boolean,
   },
   watch: {
     nodeEventId(updatedInfo) {
@@ -56,6 +66,20 @@ export default {
     this.node_y = parseInt(this.nodeObj.y);
   },
   methods: {
+    moveToNext(e) {
+      document.getElementById("tab3").click();
+      let nexts = document.getElementById("next-node-selector").children;
+      let id = e.currentTarget.getAttribute("value");
+      for (let n of nexts) {
+        if (n.innerHTML == id) {
+          n.selected = true;
+        }
+      }
+    },
+    setBlinkingCls() {
+      if (this.isCanBeDestination) return "blinking";
+      else return "no-blinking";
+    },
     //mouseOverAction() {
     //this.$emit("selectedNode", this.nodeObj);
     //},
@@ -73,5 +97,19 @@ export default {
 <style>
 #node {
   border: solid;
+}
+.blinking {
+  animation: flash 1s linear infinite;
+  fill: #0091ea;
+}
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 </style>

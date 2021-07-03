@@ -5,7 +5,7 @@
     <h1>動かせるstep数</h1>
     <h2>{{ commit }}</h2>
     <h1>あと{{ user_node.step - user_step }}ステップ</h1>
-    <select v-model="next_node">
+    <select v-model="next_node" id="next-node-selector">
       <option disabled value="">次に移動するマスを選択してください</option>
       <option v-for="node in user_node.nextNode" :key="node">{{ node }}</option>
     </select>
