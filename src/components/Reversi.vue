@@ -17,17 +17,17 @@ export default {
 		return {
 			grids:[],
 			size:0,
-			done:false,
 		}
 	},
 	props:{
 		selectLanguage: String,
 		selectLanguageColor: String,
 		closeReversiEvent: Function,
+		banEditReversi: Boolean,
 	},
 	methods:{
 		gridClicked(v){
-			if(this.done)return;
+			if(this.banEditReversi)return;
 			const n = this.grids.length;
 			let row = parseInt(v.currentTarget.getAttribute("row"));
 			let col = parseInt(v.currentTarget.getAttribute("col"));
@@ -66,7 +66,7 @@ export default {
 			.post("http://localhost:3000/api/set-reversi", this.grids)
 			.then(() => {
 				alert("石をおきました");
-				this.done = true;
+				this.banEditReversi= true;
 			})
 			.catch((e) => {
 				console.log(e);
@@ -79,6 +79,7 @@ export default {
 		.get("http://localhost:3000/api/get-reversi")
 		.then((res) => {
 			this.grids = res.data;
+			if(this.banEditReversi)return;
 			search_locatable();
 		})
 		.catch((e) => {

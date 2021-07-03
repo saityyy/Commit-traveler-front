@@ -3,10 +3,12 @@
     <h2>
       動かせるstep数 : <span>{{ commit }}</span>
     </h2>
+    <!--
     <h2>
       次のノードに行くまであと<span>{{ user_node.step - user_step }}</span
       >ステップ
     </h2>
+    -->
     <div
       id="select_next_node"
       v-if="this.commit - (this.user_node.step - this.user_step) >= 0"
@@ -44,12 +46,15 @@
       </p>
     </div>
     <input type="button" @click="update_next_node" id="button" />
+    <div style="text-align:center;">
     <input
       type="button"
       value="マスをすすめる"
       @click="moveToNext"
       :disabled="disabledCommit"
+      id="step_node_btn"
     />
+    </div>
   </div>
 </template>
 
@@ -205,5 +210,18 @@ export default {
 <style>
 #button {
   display: none;
+}
+#step_node_btn:hover{
+opacity: 0.6;
+transition: 0.2s;
+}
+#step_node_btn:disabled{
+opacity: 0.6;
+}
+#step_node_btn{
+  margin-top:10px;
+  background-color:#37beb0;
+  padding:10px;
+  border:solid 3px #c3c3c3;
 }
 </style>

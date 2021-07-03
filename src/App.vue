@@ -20,6 +20,7 @@
           :userInfo="userInfo"
           :showReversi="showReversi"
           :receiveReversiEvent="receiveReversiEvent"
+          :viewReversiEvent="viewReversiEvent"
         />
       </div>
     </div>
@@ -27,6 +28,7 @@
         :selectLanguage="selectLanguage"
         :selectLanguageColor="selectLanguageColor"
         :closeReversiEvent="closeReversiEvent"
+        :banEditReversi="banEditReversi"
     />
   </div>
 </template>
@@ -54,6 +56,7 @@ export default {
       selectLanguage: "blank",
       showReversi: false,
       showReversiLock : true,
+      banEditReversi: false,
     };
   },
   beforeCreate() {
@@ -84,6 +87,10 @@ export default {
     },
   },
   methods: {
+    viewReversiEvent: function(){
+      this.banEditReversi = true;
+      this.showReversi = true;
+    },
     receiveMapEvennt: function (event) {
       this.mapEvent = event;
     },
@@ -95,17 +102,17 @@ export default {
       this.selectLanguage = v;
       this.selectLanguageColor = c;
       this.showReversiLock= false;
-      console.log("showRevLock", this.showReversiLock);
     },
     doneUserMoveEvent: function(){
       console.log("showRevLock", this.showReversiLock);
       if(!this.showReversiLock){
+        this.showReversiLock = true;
         this.showReversi = true;
       }
     },
     closeReversiEvent: function(){
       this.showReversi = false;
-      this.showReversiLock = true;
+      this.banEditReversi = false;
     }
   },
 };
