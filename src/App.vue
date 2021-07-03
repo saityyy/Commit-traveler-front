@@ -25,6 +25,7 @@
     <Reversi v-if="showReversi"
         :receiveReversiEvent="receiveReversiEvent"
         :selectLanguage="selectLanguage"
+        :selectLanguageColor="selectLanguageColor"
     />
   </div>
 </template>
@@ -88,8 +89,9 @@ export default {
       this.sidebarEvent = event;
       console.log(event);
     },
-    receiveReversiEvent: function(v = "blank"){
+    receiveReversiEvent: function(v = "blank", c = "#999"){
       this.selectLanguage = v;
+      this.selectLanguageColor = c;
       this.showReversi = !this.showReversi;
 
     }

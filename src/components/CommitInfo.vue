@@ -134,7 +134,11 @@ export default {
   },
   methods: {
     clickReceiveReversiEvent(){
-      this.receiveReversiEvent(this.programming_language);
+      const res = this.programming_language_list.find((v)=>{
+        return v.name === this.programming_language;
+      })
+      console.log(res.color);
+      this.receiveReversiEvent(this.programming_language, res.color);
     },
     update_next_node() {
       this.next_node = document.getElementById("button").getAttribute("value");
