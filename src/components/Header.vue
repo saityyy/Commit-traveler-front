@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="mark">codeGo</div>
+    <div class="mark">Commit traveler</div>
     <div class="userInfo">
       <img
         class="logo"
@@ -70,7 +70,7 @@ export default {
   float: left;
   font-size: 35px;
   font-family: fantasy;
-  color: rgb(243, 126, 100);
+  color: rgb(255, 130, 100);
   padding-top: 20px;
   padding-left: 20px;
 }
