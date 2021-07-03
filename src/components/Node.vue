@@ -14,6 +14,14 @@
       r="20"
     ></circle>
     <text :x="node_x - 40" :y="node_y - 40" font-size="30">{{ node_id }}</text>
+    <text
+      v-if="node_type == 'start'"
+      :x="node_x - 23"
+      :y="node_y + 7"
+      font-size="20"
+      stroke-width="2"
+      >start</text
+    >
   </g>
 </template>
 
@@ -24,8 +32,8 @@ export default {
       color: "white",
       node_id: "",
       node_type: "",
-      node_x: "",
-      node_y: "",
+      node_x: -10000,
+      node_y: -10000,
     };
   },
   props: {
@@ -44,8 +52,8 @@ export default {
   created() {
     this.node_id = this.nodeObj.id;
     this.node_type = this.nodeObj.type;
-    this.node_x = this.nodeObj.x;
-    this.node_y = this.nodeObj.y;
+    this.node_x = parseInt(this.nodeObj.x);
+    this.node_y = parseInt(this.nodeObj.y);
   },
   methods: {
     //mouseOverAction() {
