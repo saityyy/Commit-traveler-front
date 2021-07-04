@@ -15,28 +15,32 @@
     >
       <h3>ゆき先</h3>
       <div class="center">
-      <select v-model="next_node" id="next-node-selector">
-        <option disabled value="">次に移動するマスを選択してください</option>
-        <option v-for="node in user_node.nextNode" :key="node" :value="node">
-          {{ node }}
-        </option>
-      </select></div>
+        <select v-model="next_node" id="next-node-selector">
+          <option disabled value="">次に移動するマスを選択してください</option>
+          <option v-for="node in user_node.nextNode" :key="node" :value="node">
+            {{ node }}
+          </option>
+        </select>
+      </div>
     </div>
     <div id="comment" v-if="next_node_type == 'checkpoint'">
       <h3>なにかひとこと</h3>
       <div class="center">
-      <input v-model="comment" placeholder="ここにコメントを入力してください" />
+        <input
+          v-model="comment"
+          placeholder="ここにコメントを入力してください"
+        />
       </div>
     </div>
     <div id="lang" v-if="next_node_type == 'checkpoint'">
       <h3>推しの言語は！？</h3>
       <div class="center">
-      <select v-model="programming_language">
-        <option disabled value="">プログラミング言語</option>
-        <option v-for="lang in programming_language_list" :key="lang.name">
-          {{ lang.name }}
-        </option>
-      </select>
+        <select v-model="programming_language">
+          <option disabled value="">プログラミング言語</option>
+          <option v-for="lang in programming_language_list" :key="lang.name">
+            {{ lang.name }}
+          </option>
+        </select>
       </div>
     </div>
     <div id="check" v-if="next_node != 0">
@@ -52,13 +56,13 @@
     </div>
     <input type="button" @click="update_next_node" id="button" />
     <div class="center">
-    <input
-      type="button"
-      value="マスをすすめる"
-      @click="moveToNext"
-      :disabled="disabledCommit"
-      id="step_node_btn"
-    />
+      <input
+        type="button"
+        value="マスをすすめる"
+        @click="moveToNext"
+        :disabled="disabledCommit"
+        id="step_node_btn"
+      />
     </div>
   </div>
 </template>
@@ -137,10 +141,10 @@ export default {
     },
   },
   methods: {
-    clickReceiveReversiEvent(){
-      const res = this.programming_language_list.find((v)=>{
+    clickReceiveReversiEvent() {
+      const res = this.programming_language_list.find((v) => {
         return v.name === this.programming_language;
-      })
+      });
       this.receiveReversiEvent(this.programming_language, res.color);
     },
     update_next_node() {
@@ -148,11 +152,12 @@ export default {
     },
     moveToNext() {
       console.log(this.disabledCommit);
-      if(this.next_node_type == 'checkpoint'){//リバーシ用に言語と色を送信する。画面推移が起こるイベントはここではなくUserが動き終わった後。
-      const res = this.programming_language_list.find((v)=>{
-        return v.name === this.programming_language;
-      })
-      this.receiveReversiEvent(this.programming_language, res.color);
+      if (this.next_node_type == "checkpoint") {
+        //リバーシ用に言語と色を送信する。画面推移が起こるイベントはここではなくUserが動き終わった後。
+        const res = this.programming_language_list.find((v) => {
+          return v.name === this.programming_language;
+        });
+        this.receiveReversiEvent(this.programming_language, res.color);
       }
 
       this.show_flag = false;
@@ -180,7 +185,9 @@ export default {
               "/" +
               commit_count +
               "/" +
-              this.comment
+              this.comment +
+              "/" +
+              this.programming_language
           )
           .then((res) => {
             console.log(res.data);
@@ -216,23 +223,23 @@ export default {
 #button {
   display: none;
 }
-#step_node_btn:hover{
-opacity: 0.6;
-transition: 0.2s;
+#step_node_btn:hover {
+  opacity: 0.6;
+  transition: 0.2s;
 }
-#step_node_btn:disabled{
-opacity: 0.6;
+#step_node_btn:disabled {
+  opacity: 0.6;
 }
-#step_node_btn{
-  margin-top:10px;
-  background-color:#37beb0;
-  padding:10px;
-  border:solid 3px #c3c3c3;
+#step_node_btn {
+  margin-top: 10px;
+  background-color: #37beb0;
+  padding: 10px;
+  border: solid 3px #c3c3c3;
 }
-select{
-  width:70%;
+select {
+  width: 70%;
 }
-input{
-  width:70%;
+input {
+  width: 70%;
 }
 </style>

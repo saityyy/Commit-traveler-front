@@ -24,11 +24,12 @@
         />
       </div>
     </div>
-    <Reversi v-if="showReversi"
-        :selectLanguage="selectLanguage"
-        :selectLanguageColor="selectLanguageColor"
-        :closeReversiEvent="closeReversiEvent"
-        :banEditReversi="banEditReversi"
+    <Reversi
+      v-if="showReversi"
+      :selectLanguage="selectLanguage"
+      :selectLanguageColor="selectLanguageColor"
+      :closeReversiEvent="closeReversiEvent"
+      :banEditReversi="banEditReversi"
     />
   </div>
 </template>
@@ -37,7 +38,7 @@
 import Map from "./components/Map.vue";
 import Sidebar from "./components/Sidebar.vue";
 import Header from "./components/Header.vue";
-import Reversi from "./components/Reversi.vue"
+import Reversi from "./components/Reversi.vue";
 export default {
   name: "App",
   components: {
@@ -55,7 +56,7 @@ export default {
       userInfo: {},
       selectLanguage: "blank",
       showReversi: false,
-      showReversiLock : true,
+      showReversiLock: true,
       banEditReversi: false,
     };
   },
@@ -87,7 +88,7 @@ export default {
     },
   },
   methods: {
-    viewReversiEvent: function(){
+    viewReversiEvent: function () {
       this.banEditReversi = true;
       this.showReversi = true;
     },
@@ -98,27 +99,30 @@ export default {
       this.sidebarEvent = event;
       console.log(event);
     },
-    receiveReversiEvent: function(v = "blank", c = "#666"){
+    receiveReversiEvent: function (v = "blank", c = "#666") {
       this.selectLanguage = v;
       this.selectLanguageColor = c;
-      this.showReversiLock= false;
+      this.showReversiLock = false;
     },
-    doneUserMoveEvent: function(){
+    doneUserMoveEvent: function () {
       console.log("showRevLock", this.showReversiLock);
-      if(!this.showReversiLock){
+      if (!this.showReversiLock) {
         this.showReversiLock = true;
         this.showReversi = true;
       }
     },
-    closeReversiEvent: function(){
+    closeReversiEvent: function () {
       this.showReversi = false;
       this.banEditReversi = false;
-    }
+    },
   },
 };
 </script>
 
 <style>
+* {
+  user-select: none;
+}
 html,
 body {
   margin: 0px;
@@ -141,7 +145,7 @@ body {
   width: 60%;
   float: left;
   border: solid;
-  position:relative;
+  position: relative;
 }
 #sidebar {
   height: 100%;

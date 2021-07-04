@@ -30,8 +30,6 @@
         @selectedNode="selectedNode"
       />
     </g>
-    <!--中心点-->
-    <circle :cx="centerx" :cy="centery" r="5" />
     <!--マップの外枠-->
     <line x1="0" y1="0" x2="100000" y2="0" stroke="black" />
     <line x1="0" y1="0" x2="0" y2="100000" stroke="black" />
@@ -73,8 +71,8 @@ export default {
       color: "white",
       viewScale: 500,
       mapdata: mapdata,
-      centerx: 1500,
-      centery: 1550,
+      centerx: -10000,
+      centery: -10000,
       prevx: this.centerx,
       prevy: this.centery,
       bottomMap: 3200,
@@ -115,6 +113,8 @@ export default {
     userInfo(updatedInfo) {
       this.user_x = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].x);
       this.user_y = parseInt(mapdata[parseInt(updatedInfo.node_id) - 1].y);
+      this.centerx = this.user_x;
+      this.centery = this.user_y;
       this.user_node = mapdata[parseInt(updatedInfo.node_id) - 1];
     },
     sidebarEvent: {
@@ -157,7 +157,7 @@ export default {
       var sum_x = 0;
       var sum_y = 0;
       var count = 0;
-      const moveMilliSecond = 4000;
+      const moveMilliSecond = 2000;
       var move = setInterval(
         function () {
           count += 1;
