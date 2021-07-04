@@ -95,7 +95,10 @@ export default {
 			j += dj;
 			dist++;
 			if(i >= n || j >=n || i < 0 || j < 0)return;
-			if(this.grids[i][j].name == 'blank'){
+			if(this.grids[i][j].name === this.selectLanguage){
+				return;
+			}
+			if(this.grids[i][j].name === 'blank'){
 				if(dist >= 2){
 					this.grids[i][j].candidate = true;
 					noCandidate = false;
