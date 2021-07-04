@@ -30,8 +30,7 @@ export default {
     userInfo: Object,
   },
   watch: {
-    userInfo(v) {
-      console.log(v);
+    userInfo() {
       this.axios
         .get("http://localhost:3000/api/get-commit")
         .then((res) => {

@@ -9,6 +9,7 @@
           @MapEvent="receiveMapEvennt"
           @SidebarEvent="receiveSidebarEvent"
           :userInfo="userInfo"
+          :doneUserMoveEvent="doneUserMoveEvent"
         />
       </div>
       <div id="sidebar">
@@ -17,9 +18,18 @@
           :sidebarEvent="sidebarEvent"
           @SidebarEvent="receiveSidebarEvent"
           :userInfo="userInfo"
+          :showReversi="showReversi"
+          :receiveReversiEvent="receiveReversiEvent"
+          :viewReversiEvent="viewReversiEvent"
         />
       </div>
     </div>
+    <Reversi v-if="showReversi"
+        :selectLanguage="selectLanguage"
+        :selectLanguageColor="selectLanguageColor"
+        :closeReversiEvent="closeReversiEvent"
+        :banEditReversi="banEditReversi"
+    />
   </div>
 </template>
 
@@ -27,13 +37,14 @@
 import Map from "./components/Map.vue";
 import Sidebar from "./components/Sidebar.vue";
 import Header from "./components/Header.vue";
-
+import Reversi from "./components/Reversi.vue"
 export default {
   name: "App",
   components: {
     Header,
     Map,
     Sidebar,
+    Reversi,
   },
   data: function () {
     return {
@@ -42,6 +53,10 @@ export default {
         moveToNext: { userMovingFlag: false, nextNode: {} },
       },
       userInfo: {},
+      selectLanguage: "blank",
+      showReversi: false,
+      showReversiLock : true,
+      banEditReversi: false,
     };
   },
   beforeCreate() {
@@ -72,6 +87,10 @@ export default {
     },
   },
   methods: {
+    viewReversiEvent: function(){
+      this.banEditReversi = true;
+      this.showReversi = true;
+    },
     receiveMapEvennt: function (event) {
       this.mapEvent = event;
     },
@@ -79,6 +98,22 @@ export default {
       this.sidebarEvent = event;
       console.log(event);
     },
+    receiveReversiEvent: function(v = "blank", c = "#666"){
+      this.selectLanguage = v;
+      this.selectLanguageColor = c;
+      this.showReversiLock= false;
+    },
+    doneUserMoveEvent: function(){
+      console.log("showRevLock", this.showReversiLock);
+      if(!this.showReversiLock){
+        this.showReversiLock = true;
+        this.showReversi = true;
+      }
+    },
+    closeReversiEvent: function(){
+      this.showReversi = false;
+      this.banEditReversi = false;
+    }
   },
 };
 </script>
@@ -106,12 +141,11 @@ body {
   width: 60%;
   float: left;
   border: solid;
+  position:relative;
 }
 #sidebar {
   height: 100%;
   width: 35%;
-  margin-right: 1%;
-  margin-left: 1%;
   float: right;
   border: solid;
 }

@@ -74,10 +74,10 @@ export default {
       viewScale: 500,
       mapdata: mapdata,
       centerx: 1500,
-      centery: 1500,
+      centery: 1550,
       prevx: this.centerx,
       prevy: this.centery,
-      bottomMap: 3000,
+      bottomMap: 3200,
       rightMap: 3000,
       canMove: false,
       nodeEvent: null,
@@ -97,6 +97,7 @@ export default {
     mapEvent: Object,
     sidebarEvent: Object,
     userInfo: Object,
+    doneUserMoveEvent: Function,
   },
   created() {
     //マップデータベース更新
@@ -169,6 +170,7 @@ export default {
             this.user_x = parseInt(nextNode.x);
             this.user_y = parseInt(nextNode.y);
             this.endMove();
+            this.doneUserMoveEvent();
             clearInterval(move);
           }
         }.bind(this), //vueのデータを参照するには.bind(this)をつける
@@ -183,11 +185,11 @@ export default {
     },
     mouseWheelAction(e) {
       this.viewScale = parseInt(this.viewScale);
-      if (e.deltaY > 0) this.viewScale += 10;
-      else this.viewScale -= 10;
-      if (this.viewScale < 150) this.viewScale = 150;
-      const limitZoom = Math.min(this.rightMap, this.bottomMap);
-      if (this.viewScale > limitZoom) this.viewScale = limitZoom;
+      if (e.deltaY > 0) this.viewScale += 35;
+      else this.viewScale -= 35;
+      if (this.viewScale < 500) this.viewScale = 500;
+      //const limitZoom = Math.min(this.rightMap, this.bottomMap);
+      if (this.viewScale > 1500) this.viewScale = 1500;
     },
     moveMap(e) {
       if (this.canMove) {

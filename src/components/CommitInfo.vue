@@ -1,36 +1,43 @@
 <template>
   <div id="commitinfo" v-if="show_flag">
     <h2>
-      動かせるstep数 : <span>{{ commit }}</span>
+      たいりょく : <span>{{ commit }}</span>
     </h2>
+    <!--
     <h2>
       次のノードに行くまであと<span>{{ user_node.step - user_step }}</span
       >ステップ
     </h2>
+    -->
     <div
       id="select_next_node"
       v-if="this.commit - (this.user_node.step - this.user_step) >= 0"
     >
-      <h3>次に進むノードを選択してください</h3>
+      <h3>ゆき先</h3>
+      <div class="center">
       <select v-model="next_node" id="next-node-selector">
         <option disabled value="">次に移動するマスを選択してください</option>
         <option v-for="node in user_node.nextNode" :key="node" :value="node">
           {{ node }}
         </option>
-      </select>
+      </select></div>
     </div>
     <div id="comment" v-if="next_node_type == 'checkpoint'">
-      <h3>コメントを入力してください</h3>
+      <h3>なにかひとこと</h3>
+      <div class="center">
       <input v-model="comment" placeholder="ここにコメントを入力してください" />
+      </div>
     </div>
     <div id="lang" v-if="next_node_type == 'checkpoint'">
-      <h3>推しの言語を入力してください</h3>
+      <h3>推しの言語は！？</h3>
+      <div class="center">
       <select v-model="programming_language">
         <option disabled value="">プログラミング言語</option>
         <option v-for="lang in programming_language_list" :key="lang.name">
           {{ lang.name }}
         </option>
       </select>
+      </div>
     </div>
     <div id="check" v-if="next_node != 0">
       <h3>下記の内容でマップを進めます</h3>
@@ -44,12 +51,15 @@
       </p>
     </div>
     <input type="button" @click="update_next_node" id="button" />
+    <div class="center">
     <input
       type="button"
       value="マスをすすめる"
       @click="moveToNext"
       :disabled="disabledCommit"
+      id="step_node_btn"
     />
+    </div>
   </div>
 </template>
 
@@ -75,6 +85,7 @@ export default {
   props: {
     sidebarEvent: Object,
     userInfo: Object,
+    receiveReversiEvent: Function,
   },
   watch: {
     userInfo(updatedInfo) {
@@ -85,7 +96,6 @@ export default {
       this.axios
         .get("http://localhost:3000/api/get-commit")
         .then((res) => {
-          console.log(res.data);
           this.all_commit = res.data.all_commit;
           this.commit = res.data.commit;
           this.table_commit = res.data.table_commit;
@@ -96,8 +106,6 @@ export default {
       this.axios
         .get("http://localhost:3000/api/get-langs")
         .then((res) => {
-          console.log("get-langs");
-          console.log(res.data);
           this.programming_language_list = res.data;
         })
         .catch((e) => {
@@ -112,7 +120,6 @@ export default {
   computed: {
     disabledCommit: function () {
       //１マス進む場合
-      console.log(this.next_node);
       if (this.commit - (this.user_node.step - this.user_step) >= 0) {
         if (this.next_node == 0) return true;
         else {
@@ -130,10 +137,24 @@ export default {
     },
   },
   methods: {
+    clickReceiveReversiEvent(){
+      const res = this.programming_language_list.find((v)=>{
+        return v.name === this.programming_language;
+      })
+      this.receiveReversiEvent(this.programming_language, res.color);
+    },
     update_next_node() {
       this.next_node = document.getElementById("button").getAttribute("value");
     },
     moveToNext() {
+      console.log(this.disabledCommit);
+      if(this.next_node_type == 'checkpoint'){//リバーシ用に言語と色を送信する。画面推移が起こるイベントはここではなくUserが動き終わった後。
+      const res = this.programming_language_list.find((v)=>{
+        return v.name === this.programming_language;
+      })
+      this.receiveReversiEvent(this.programming_language, res.color);
+      }
+
       this.show_flag = false;
       this.next_node_type = "node";
       //同じノードでthis.commit分進める場合
@@ -194,5 +215,24 @@ export default {
 <style>
 #button {
   display: none;
+}
+#step_node_btn:hover{
+opacity: 0.6;
+transition: 0.2s;
+}
+#step_node_btn:disabled{
+opacity: 0.6;
+}
+#step_node_btn{
+  margin-top:10px;
+  background-color:#37beb0;
+  padding:10px;
+  border:solid 3px #c3c3c3;
+}
+select{
+  width:70%;
+}
+input{
+  width:70%;
 }
 </style>
