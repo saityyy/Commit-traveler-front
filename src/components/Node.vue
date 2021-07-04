@@ -22,8 +22,15 @@
       :value="nodeObj.id"
       v-if="isCanBeDestination"
     ></circle>
-    <text :x="node_x - 40" :y="node_y - 40" font-size="30">{{ node_id }}</text>
     <text
+      class="no-selected"
+      :x="node_x - 40"
+      :y="node_y - 40"
+      font-size="30"
+      >{{ node_id }}</text
+    >
+    <text
+      class="no-selected"
       v-if="node_type == 'start'"
       :x="node_x - 23"
       :y="node_y + 7"
@@ -88,6 +95,9 @@ export default {
 <style>
 #node {
   border: solid;
+}
+.no-selected {
+  user-select: none;
 }
 .blinking {
   animation: flash 1s linear infinite;

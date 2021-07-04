@@ -71,7 +71,7 @@ export default {
   data: function () {
     return {
       color: "white",
-      viewScale: 1500,
+      viewScale: 500,
       mapdata: mapdata,
       centerx: 1500,
       centery: 1500,
