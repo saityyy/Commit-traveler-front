@@ -4,6 +4,7 @@
 - 他のユーザーと交流することができる。
 - プログラミング言語でオセロができる（？）
 - node.js,vue.jsを使用。DBはMySQL,バックエンドのリポジトリ＝＞https://github.com/Kaito-design/Commit-traveler-back
+- 発表スライド＝＞https://docs.google.com/presentation/d/1IxjY20gRl3idDwEAnHdQhpnkR5NW2kvA8aEtD9P2hDs/edit?usp=sharing
 
 ## ログイン
 githubアカウントを連携する。
